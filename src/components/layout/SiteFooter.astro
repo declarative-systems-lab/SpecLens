@@ -1,0 +1,12 @@
+---
+import { siteMeta, contact } from '../../config/siteContent';
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <p>
+      © {new Date().getFullYear()} {siteMeta.name} ·
+      <a href={`mailto:${contact.email}`}>{contact.email}</a>
+    </p>
+  </div>
+</footer>

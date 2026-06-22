@@ -1,0 +1,42 @@
+---
+import { projectLinks } from '../../config/projectLinks';
+---
+
+<section id="demos" class="border-b border-ink-200/70 bg-white">
+  <div class="section-shell">
+    <p class="section-label">Demos</p>
+    <h2 class="section-title">Explore NetSubSpec</h2>
+
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+      <article class="surface-card flex flex-col p-7">
+        <h3 class="font-display text-xl font-semibold text-ink-900">User-Study Demo</h3>
+        <p class="mt-3 flex-1 text-sm leading-relaxed text-ink-600">
+          Explore the realistic configuration-maintenance tasks used in our user study and see how localized subspecifications help users inspect configuration updates.
+        </p>
+        <a
+          href={projectLinks.userStudy}
+          class="btn-primary mt-6 w-fit"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Explore User-Study Tasks
+        </a>
+      </article>
+
+      <article class="surface-card flex flex-col p-7">
+        <h3 class="font-display text-xl font-semibold text-ink-900">Multi-Subspec Demo</h3>
+        <p class="mt-3 flex-1 text-sm leading-relaxed text-ink-600">
+          Explore how multiple configuration locations and their dependencies contribute to verified network behavior. A dedicated experience is under development.
+        </p>
+        <a
+          href={projectLinks.multiSubspec}
+          class="btn-secondary mt-6 w-fit"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Explore Multi-Subspec
+        </a>
+      </article>
+    </div>
+  </div>
+</section>

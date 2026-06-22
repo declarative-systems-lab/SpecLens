@@ -1,0 +1,111 @@
+.explainer-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .explainer-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+    align-items: start;
+  }
+}
+
+.explainer-panel,
+.subspec-panel {
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 0.875rem;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 8px 24px rgba(15, 23, 42, 0.04);
+}
+
+.explainer-panel-header {
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+  background: linear-gradient(180deg, rgba(219, 234, 254, 0.35) 0%, rgba(255, 255, 255, 0) 100%);
+  padding: 1rem 1.25rem;
+}
+
+.explainer-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+  font-size: 0.75rem;
+  color: #475569;
+}
+
+.legend-swatch {
+  display: inline-block;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 0.2rem;
+  margin-right: 0.35rem;
+  vertical-align: -1px;
+}
+
+.legend-field {
+  background: #b8dcf9;
+}
+
+.legend-line {
+  background: #e2c0e8;
+}
+
+.legend-empty {
+  background: rgba(220, 240, 255, 0.8);
+  border: 1px solid #cbd5e1;
+}
+
+.config-view {
+  margin: 0;
+  padding: 1rem 0;
+  overflow-x: auto;
+  background: #fffbeb;
+  border-bottom-left-radius: 0.875rem;
+  border-bottom-right-radius: 0.875rem;
+}
+
+.config-line {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.1rem 1rem;
+  font-family: 'IBM Plex Mono', Consolas, monospace;
+  font-size: 0.8125rem;
+  line-height: 1.65;
+}
+
+.config-line:hover {
+  background: rgba(253, 230, 138, 0.15);
+}
+
+.line-number {
+  flex: 0 0 1.5rem;
+  text-align: right;
+  color: #94a3b8;
+  user-select: none;
+}
+
+.line-content {
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #1e293b;
+}
+
+.subspec-panel {
+  padding: 1.25rem;
+  min-height: 320px;
+}
+
+.subspec-empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 280px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .config-line,
+  button {
+    transition: none;
+  }
+}

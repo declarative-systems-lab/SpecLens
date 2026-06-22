@@ -1,0 +1,25 @@
+---
+import { projectLinks } from '../../../config/projectLinks';
+---
+
+<div class="panel-inner">
+  <p class="section-label" data-i18n="nav.demos">Demos</p>
+  <h2 class="section-title text-xl sm:text-2xl">Explore NetSubSpec</h2>
+
+  <div class="mt-6 grid gap-4 sm:grid-cols-2">
+    <article class="surface-card flex flex-col p-5">
+      <h3 class="font-display font-semibold text-ink-900">User-Study Demo</h3>
+      <p class="mt-2 flex-1 text-sm text-ink-600">Configuration-maintenance tasks from our operator study.</p>
+      <a href={projectLinks.userStudy} class="btn-primary mt-4 w-fit text-sm" target="_blank" rel="noopener noreferrer">
+        Open demo
+      </a>
+    </article>
+    <article class="surface-card flex flex-col p-5">
+      <h3 class="font-display font-semibold text-ink-900">Multi-Subspec Demo</h3>
+      <p class="mt-2 flex-1 text-sm text-ink-600">Multi-location reasoning — dedicated experience in development.</p>
+      <a href={projectLinks.multiSubspec} class="btn-secondary mt-4 w-fit text-sm" target="_blank" rel="noopener noreferrer">
+        Open demo
+      </a>
+    </article>
+  </div>
+</div>

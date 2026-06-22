@@ -1,0 +1,46 @@
+---
+import ConfigExplainer from '../config-explainer/ConfigExplainer.tsx';
+import { projectLinks } from '../../config/projectLinks';
+---
+
+<section id="demo" class="border-b border-ink-200 bg-white">
+  <div class="section-shell">
+    <p class="section-label">Configuration explanations</p>
+    <h2 class="section-title">Inspect localized explanations on real configuration</h2>
+    <p class="section-lead">
+      Hover or click highlighted configuration lines and fields to see natural-language explanations,
+      raw symbolic constraints, and the corresponding global property. Uses the warm-up task from our
+      user study — no participant ID, timing, or answer submission.
+    </p>
+
+    <div class="mt-10">
+      <ConfigExplainer client:load />
+    </div>
+
+    <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2">
+      <a
+        href={projectLinks.userStudy}
+        class="btn-secondary"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Explore the User-Study Tasks
+      </a>
+      <div class="flex flex-wrap items-center gap-4 text-xs text-ink-500">
+        <span class="inline-flex items-center gap-1.5">
+          <span class="h-3 w-6 rounded-sm bg-[#B8DCF9]" aria-hidden="true"></span>
+          Field subspec
+        </span>
+        <span class="inline-flex items-center gap-1.5">
+          <span class="h-3 w-6 rounded-sm bg-[#E2C0E8]" aria-hidden="true"></span>
+          Line-level
+        </span>
+        <span class="inline-flex items-center gap-1.5">
+          <span class="h-3 w-6 rounded-sm bg-spec-muted ring-1 ring-ink-200" aria-hidden="true"></span>
+          Unrestricted
+        </span>
+        <span class="text-ink-400">Tab to move between fields · Enter to pin tooltip · Esc to dismiss</span>
+      </div>
+    </div>
+  </div>
+</section>

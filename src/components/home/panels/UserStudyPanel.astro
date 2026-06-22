@@ -1,0 +1,54 @@
+---
+import { projectLinks } from '../../../config/projectLinks';
+import { userStudyMetrics } from '../../../config/siteContent';
+---
+
+<div class="panel-inner">
+  <p class="section-label" data-i18n="userStudy.label">User study</p>
+  <h2 class="section-title text-xl sm:text-2xl" data-i18n="userStudy.title">
+    Validated with network operators and graduate students
+  </h2>
+
+  <dl class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-8">
+    <div class="surface-card p-3 text-center">
+      <dt class="text-lg font-semibold tabular-nums">{userStudyMetrics.accuracyImprovement}</dt>
+      <dd class="text-[0.65rem] text-ink-600" data-i18n="userStudy.evalAccuracy">accuracy ↑</dd>
+    </div>
+    <div class="surface-card p-3 text-center">
+      <dt class="text-lg font-semibold tabular-nums">{userStudyMetrics.timeReduction}</dt>
+      <dd class="text-[0.65rem] text-ink-600" data-i18n="userStudy.evalTime">time ↓</dd>
+    </div>
+    <div class="surface-card p-3 text-center">
+      <dt class="text-lg font-semibold tabular-nums">{userStudyMetrics.internet2Minutes}m</dt>
+      <dd class="text-[0.65rem] text-ink-600">Internet2</dd>
+    </div>
+    <div class="surface-card p-3 text-center">
+      <dt class="text-lg font-semibold tabular-nums">{userStudyMetrics.fiveHundredRouterMinutes}m</dt>
+      <dd class="text-[0.65rem] text-ink-600" data-i18n="userStudy.evalLargeNet">500 routers</dd>
+    </div>
+    <div class="surface-card p-3 text-center">
+      <dt class="text-lg font-semibold tabular-nums">{userStudyMetrics.participants}</dt>
+      <dd class="text-[0.65rem] text-ink-600" data-i18n="trust.participants">participants</dd>
+    </div>
+    <div class="surface-card p-3 text-center">
+      <dt class="text-lg font-semibold tabular-nums">{userStudyMetrics.frequentUseInterest}</dt>
+      <dd class="text-[0.65rem] text-ink-600" data-i18n="trust.interest">frequent use</dd>
+    </div>
+    <div class="surface-card p-3 text-center col-span-2">
+      <dt class="text-sm font-semibold">SUS 62.3</dt>
+      <dd class="text-[0.65rem] text-ink-600" data-i18n="userStudy.susTitle">System Usability Scale</dd>
+    </div>
+  </dl>
+
+  <div class="mt-4 grid gap-3 lg:grid-cols-2">
+    <img src="/figures/fig-userstudy-accuracy-combined.png" alt="Accuracy" class="surface-card w-full p-2 max-h-[28vh] object-contain" loading="lazy" />
+    <img src="/figures/fig-userstudy-time-combined.png" alt="Completion time" class="surface-card w-full p-2 max-h-[28vh] object-contain" loading="lazy" />
+  </div>
+
+  <p class="mt-3 text-xs text-ink-600" data-i18n="userStudy.lead">
+    23 participants (15 operators, 8 graduate students) on four configuration reasoning tasks.
+  </p>
+  <a href={projectLinks.paper} class="mt-2 inline-block text-xs font-medium text-accent hover:text-accent-dark" data-i18n="userStudy.readPaper">
+    Read the full evaluation →
+  </a>
+</div>

@@ -1,0 +1,147 @@
+---
+import { projectLinks } from '../../config/projectLinks';
+import { userStudyMetrics } from '../../config/siteContent';
+---
+
+<section id="user-study" class="border-b border-ink-200/70 bg-white">
+  <div class="section-shell">
+    <p class="section-label" data-i18n="userStudy.label">User study</p>
+    <h2 class="section-title" data-i18n="userStudy.title">
+      Validated with network operators and graduate students
+    </h2>
+    <p class="section-lead" data-i18n="userStudy.lead">
+      We evaluated NetSubSpec with 23 participants (15 professional network operators and 8 networking graduate students) on four configuration reasoning tasks.
+    </p>
+
+    <section class="mt-12 surface-card p-8">
+      <h3 class="font-display text-lg font-semibold text-ink-900" data-i18n="userStudy.evalTitle">
+        Evaluation highlights (core paper)
+      </h3>
+      <dl class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div>
+          <dt class="text-2xl font-semibold tabular-nums text-ink-900">{userStudyMetrics.accuracyImprovement}</dt>
+          <dd class="text-sm text-ink-600" data-i18n="userStudy.evalAccuracy">accuracy improvement</dd>
+        </div>
+        <div>
+          <dt class="text-2xl font-semibold tabular-nums text-ink-900">{userStudyMetrics.timeReduction}</dt>
+          <dd class="text-sm text-ink-600" data-i18n="userStudy.evalTime">time reduction</dd>
+        </div>
+        <div>
+          <dt class="text-2xl font-semibold tabular-nums text-ink-900">{userStudyMetrics.internet2Minutes} min</dt>
+          <dd class="text-sm text-ink-600">Internet2</dd>
+        </div>
+        <div>
+          <dt class="text-2xl font-semibold tabular-nums text-ink-900">{userStudyMetrics.fiveHundredRouterMinutes} min</dt>
+          <dd class="text-sm text-ink-600" data-i18n="userStudy.evalLargeNet">500-router network</dd>
+        </div>
+      </dl>
+    </section>
+
+    <div class="mt-12 grid gap-10 lg:grid-cols-2">
+      <article>
+        <h3 class="font-display text-lg font-semibold text-ink-900" data-i18n="userStudy.accuracyTitle">
+          Task accuracy improves with localized subspecifications
+        </h3>
+        <p class="mt-3 text-sm leading-relaxed text-ink-600" data-i18n="userStudy.accuracyLead">
+          Participants scored higher when explanations were available. Combined accuracy rose from 1.83 to 2.67 points (+52% relative improvement on the paper scale). Task 4 showed the largest gain (+78%).
+        </p>
+        <figure class="mt-6 surface-card overflow-hidden p-4">
+          <img
+            src="/figures/fig-userstudy-accuracy-combined.png"
+            alt="User study accuracy with and without subspecifications"
+            class="w-full"
+            loading="lazy"
+          />
+          <div class="mt-4 grid gap-4 sm:grid-cols-2">
+            <img
+              src="/figures/fig-userstudy-accuracy-academia.png"
+              alt="Accuracy — graduate students"
+              class="w-full rounded border border-ink-100"
+              loading="lazy"
+            />
+            <img
+              src="/figures/fig-userstudy-accuracy-industry.png"
+              alt="Accuracy — network operators"
+              class="w-full rounded border border-ink-100"
+              loading="lazy"
+            />
+          </div>
+        </figure>
+      </article>
+
+      <article>
+        <h3 class="font-display text-lg font-semibold text-ink-900" data-i18n="userStudy.timeTitle">
+          Completion time decreases, especially for students
+        </h3>
+        <p class="mt-3 text-sm leading-relaxed text-ink-600" data-i18n="userStudy.timeLead">
+          Overall median completion time dropped by 24% (9.5 → 7.1 minutes). Graduate students saw nearly 2× speedup with subspecs; operators benefited most on the hardest task.
+        </p>
+        <figure class="mt-6 surface-card overflow-hidden p-4">
+          <img
+            src="/figures/fig-userstudy-time-combined.png"
+            alt="User study completion time with and without subspecifications"
+            class="w-full"
+            loading="lazy"
+          />
+          <div class="mt-4 grid gap-4 sm:grid-cols-2">
+            <img
+              src="/figures/fig-userstudy-time-academia.png"
+              alt="Completion time — graduate students"
+              class="w-full rounded border border-ink-100"
+              loading="lazy"
+            />
+            <img
+              src="/figures/fig-userstudy-time-industry.png"
+              alt="Completion time — network operators"
+              class="w-full rounded border border-ink-100"
+              loading="lazy"
+            />
+          </div>
+        </figure>
+      </article>
+    </div>
+
+    <article class="mt-12">
+      <h3 class="font-display text-lg font-semibold text-ink-900" data-i18n="userStudy.susTitle">
+        System Usability Scale (SUS)
+      </h3>
+      <p class="mt-3 max-w-3xl text-sm leading-relaxed text-ink-600" data-i18n="userStudy.susLead">
+        Mean SUS was 62.3/100 overall (71.3 academia, 57.5 industry). 70% of participants reported they would use localized subspecifications frequently; 17/23 noted initial learning cost.
+      </p>
+      <figure class="mt-6 surface-card overflow-hidden p-4">
+        <img
+          src="/figures/fig-legend-userstudy.png"
+          alt="User study figure legend"
+          class="mb-4 max-h-12 w-auto"
+          loading="lazy"
+        />
+        <div class="grid gap-4 lg:grid-cols-3">
+          <img
+            src="/figures/fig-userstudy-sus-combined.png"
+            alt="SUS scores — all participants"
+            class="w-full"
+            loading="lazy"
+          />
+          <img
+            src="/figures/fig-userstudy-sus-academia.png"
+            alt="SUS scores — graduate students"
+            class="w-full"
+            loading="lazy"
+          />
+          <img
+            src="/figures/fig-userstudy-sus-industry.png"
+            alt="SUS scores — network operators"
+            class="w-full"
+            loading="lazy"
+          />
+        </div>
+      </figure>
+    </article>
+
+    <p class="mt-8">
+      <a href={projectLinks.paper} class="text-sm font-medium text-accent hover:text-accent-dark" data-i18n="userStudy.readPaper">
+        Read the full evaluation →
+      </a>
+    </p>
+  </div>
+</section>

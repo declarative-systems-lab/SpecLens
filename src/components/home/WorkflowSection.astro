@@ -1,0 +1,57 @@
+---
+import { workflowSteps } from '../../config/siteContent';
+---
+
+<section id="workflow" class="border-b border-ink-200/70 bg-ink-50/50">
+  <div class="section-shell">
+    <p class="section-label" data-i18n="workflow.label">Workflow</p>
+    <h2 class="section-title" data-i18n="workflow.title">
+      How NetSubSpec Fits into the Network Operations Workflow
+    </h2>
+    <p class="section-lead" data-i18n="workflow.lead">
+      NetSubSpec complements existing network verification, synthesis, and repair systems rather than replacing them.
+    </p>
+
+    <figure class="mt-10 surface-card overflow-hidden p-4 sm:p-6">
+      <img
+        src="/figures/fig-overview-new.png"
+        alt="NetSubSpec workflow overview"
+        class="w-full"
+        loading="lazy"
+      />
+      <figcaption class="mt-3 text-center text-xs text-ink-500" data-i18n="workflow.overviewCaption">
+        NetSubSpec in the network operations workflow (from the paper).
+      </figcaption>
+    </figure>
+
+    <div class="mt-12">
+      <h3 class="font-display text-xl font-semibold text-ink-900" data-i18n="workflow.technicalTitle">
+        Technical pipeline
+      </h3>
+
+      <figure class="mt-6 surface-card overflow-hidden p-4 sm:p-6">
+        <img
+          src="/figures/fig-pipeline-new.png"
+          alt="NetSubSpec two-phase technical pipeline"
+          class="w-full"
+          loading="lazy"
+        />
+        <figcaption class="mt-3 text-center text-xs text-ink-500" data-i18n="workflow.pipelineCaption">
+          Two-phase pipeline for extracting localized subspecifications.
+        </figcaption>
+      </figure>
+
+      <ol class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          workflowSteps.map((step, i) => (
+            <li class="surface-card p-5">
+              <span class="text-xs font-bold uppercase tracking-wider text-accent">Step {i + 1}</span>
+              <p class="mt-2 font-display font-semibold text-ink-900">{step.title}</p>
+              <p class="mt-2 text-sm leading-relaxed text-ink-600">{step.description}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>

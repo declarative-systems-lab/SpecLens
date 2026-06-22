@@ -1,0 +1,24 @@
+---
+import { scopeItems } from '../../config/siteContent';
+---
+
+<section class="border-b border-ink-200 bg-white">
+  <div class="section-shell">
+    <p class="section-label">Scope</p>
+    <h2 class="section-title">Scope and Limitations</h2>
+    <ul class="mt-8 max-w-3xl space-y-3">
+      {
+        scopeItems.map((item) => (
+          <li class="flex gap-3 text-sm leading-relaxed text-ink-700">
+            <span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-ink-400" aria-hidden="true"></span>
+            {item}
+          </li>
+        ))
+      }
+    </ul>
+    <p class="mt-6 text-sm text-ink-500">
+      Formal definitions appear on the <a class="text-accent-dark hover:underline" href="/research">Research</a> page
+      and in the <a class="text-accent-dark hover:underline" href="/docs/limitations">documentation</a>.
+    </p>
+  </div>
+</section>

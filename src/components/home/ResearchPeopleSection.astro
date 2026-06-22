@@ -1,0 +1,108 @@
+---
+import { coreResearch, researchExtensions } from '../../config/extensions';
+import { contributors } from '../../config/siteContent';
+import { projectLinks } from '../../config/projectLinks';
+
+const statusLabel: Record<string, string> = {
+  published: 'Published',
+  prototype: 'Prototype',
+  ongoing: 'Ongoing',
+};
+---
+
+<section id="research" class="border-b border-ink-200/70 bg-ink-50/50">
+  <div class="section-shell">
+    <p class="section-label" data-i18n="research.label">Research</p>
+    <h2 class="section-title" data-i18n="research.title">Research &amp; people</h2>
+    <p class="section-lead" data-i18n="research.lead">
+      The SIGCOMM 2026 paper introduces the core explanation system. Subsequent work extends localized subspecifications to repair spaces, failures, and multi-location reasoning.
+    </p>
+
+    <article class="mt-10 surface-card border-accent/25 p-8 ring-1 ring-accent/10">
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="rounded-full bg-accent px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">Core</span>
+        <span class="text-sm font-medium text-ink-500">{coreResearch.venue}</span>
+      </div>
+      <h3 class="mt-4 font-display text-2xl font-semibold text-ink-900">{coreResearch.title}</h3>
+      <p class="mt-4 max-w-3xl text-sm leading-relaxed text-ink-700">{coreResearch.description}</p>
+      <a href={coreResearch.pdf} class="btn-primary mt-6 inline-flex" data-i18n="research.downloadCore">
+        Download PDF
+      </a>
+    </article>
+
+    <h3 class="mt-16 font-display text-xl font-semibold text-ink-900" data-i18n="research.extensionsTitle">
+      Research extensions
+    </h3>
+    <div class="mt-8 grid gap-6">
+      {
+        researchExtensions.map((ext) => (
+          <article class="surface-card p-7">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="rounded-full bg-ink-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-ink-700">
+                {statusLabel[ext.status] ?? ext.status}
+              </span>
+              {ext.venue && (
+                <span class="text-sm text-ink-500">
+                  {ext.venue}
+                  {ext.date ? ` · ${ext.date}` : ''}
+                  {ext.location ? ` · ${ext.location}` : ''}
+                </span>
+              )}
+            </div>
+            <h4 class="mt-3 font-display text-xl font-semibold text-ink-900">{ext.title}</h4>
+            {ext.authors.length > 0 && (
+              <p class="mt-2 text-sm text-ink-500">{ext.authors.join(', ')}</p>
+            )}
+            <p class="mt-4 text-sm leading-relaxed text-ink-700">{ext.description}</p>
+            <div class="mt-5 flex flex-wrap gap-3">
+              {ext.pdf && <a href={ext.pdf} class="btn-secondary">PDF</a>}
+              {ext.doi && (
+                <a href={ext.doi} class="btn-ghost" target="_blank" rel="noopener noreferrer">
+                  DOI
+                </a>
+              )}
+              {ext.link && (
+                <a href={ext.link} class="btn-ghost" target="_blank" rel="noopener noreferrer">
+                  Demo
+                </a>
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="mt-16 border-t border-ink-200 pt-16">
+      <h3 class="font-display text-xl font-semibold text-ink-900" data-i18n="research.peopleTitle">
+        People &amp; contact
+      </h3>
+      <p class="mt-3 max-w-3xl text-sm leading-relaxed text-ink-600" data-i18n="research.peopleLead">
+        NetSubSpec is developed at ShanghaiTech University. SIGCOMM core-paper authors will be listed after camera-ready de-anonymization.
+      </p>
+
+      <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          contributors.team.map((person) => (
+            <article class="surface-card p-5">
+              <h4 class="font-display font-semibold text-ink-900">{person.name}</h4>
+              {'role' in person && person.role && (
+                <p class="mt-1 text-xs font-medium text-accent">{person.role}</p>
+              )}
+              <p class="mt-2 text-sm text-ink-600">{person.affiliation}</p>
+              <a href={`mailto:${person.email}`} class="mt-3 inline-block text-sm text-accent hover:text-accent-dark">
+                {person.email}
+              </a>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="mt-10 flex flex-wrap gap-4 text-sm">
+        <a href={projectLinks.contact} class="btn-secondary" data-i18n="research.contactTeam">
+          Contact the team
+        </a>
+        <span class="btn-secondary cursor-not-allowed text-ink-400" title="Coming soon">GitHub Issues</span>
+      </div>
+    </div>
+  </div>
+</section>

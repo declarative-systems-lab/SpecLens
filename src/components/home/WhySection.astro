@@ -1,0 +1,23 @@
+---
+import { whyQuestions } from '../../config/siteContent';
+---
+
+<section id="why" class="border-b border-ink-200 bg-ink-50/40">
+  <div class="section-shell">
+    <p class="section-label">Why NetSubSpec</p>
+    <h2 class="section-title max-w-4xl">
+      Network verification tells you whether a configuration is correct. NetSubSpec explains why.
+    </h2>
+
+    <ul class="mt-10 grid gap-4 sm:grid-cols-2">
+      {
+        whyQuestions.map((question) => (
+          <li class="flex gap-3 rounded-lg border border-ink-200/80 bg-white px-5 py-4 text-sm leading-relaxed text-ink-700">
+            <span class="mt-0.5 font-semibold text-accent" aria-hidden="true">→</span>
+            {question}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

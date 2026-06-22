@@ -1,0 +1,60 @@
+---
+import { getStartedPlaceholder, scopeItems } from '../../config/siteContent';
+---
+
+<section id="get-started" class="border-b border-ink-200/70 bg-white">
+  <div class="section-shell">
+    <p class="section-label" data-i18n="getStarted.label">Get started</p>
+    <h2 class="section-title" data-i18n="getStarted.title">Run NetSubSpec on your configurations</h2>
+    <p class="section-lead">{getStartedPlaceholder.message}</p>
+
+    <div class="mt-10 grid gap-8 lg:grid-cols-2">
+      <div class="surface-card p-6">
+        <h3 class="font-display text-lg font-semibold text-ink-900" data-i18n="getStarted.prerequisitesTitle">
+          Prerequisites
+        </h3>
+        <ul class="mt-4 space-y-2">
+          {
+            getStartedPlaceholder.prerequisites.map((item) => (
+              <li class="flex gap-2 text-sm text-ink-700">
+                <span class="text-accent">•</span>
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="surface-card border-dashed border-ink-300 bg-ink-50/50 p-6">
+        <h3 class="font-display text-lg font-semibold text-ink-900" data-i18n="getStarted.cliTitle">
+          Command-line interface
+        </h3>
+        <p class="mt-3 text-sm text-ink-600" data-i18n="getStarted.cliBody">
+          Installation commands and a minimal example will appear here when the open-source artifact is published. No placeholder commands are shown until they are verified.
+        </p>
+        <div class="mt-4 rounded-lg border border-ink-200 bg-white px-4 py-8 text-center text-sm text-ink-400" data-i18n="getStarted.pending">
+          Artifact release pending
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white">
+  <div class="section-shell !py-12">
+    <p class="section-label" data-i18n="scope.label">Scope &amp; limitations</p>
+    <h2 class="font-display text-2xl font-semibold text-ink-900" data-i18n="scope.title">
+      What NetSubSpec guarantees — and what it does not
+    </h2>
+    <ul class="mt-6 grid gap-3 sm:grid-cols-2">
+      {
+        scopeItems.map((item) => (
+          <li class="flex gap-2 text-sm leading-relaxed text-ink-700">
+            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+            {item}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

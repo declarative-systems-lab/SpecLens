@@ -1,0 +1,62 @@
+---
+import { userStudyMetrics } from '../../config/siteContent';
+import { projectLinks } from '../../config/projectLinks';
+---
+
+<section id="trust" class="border-b border-ink-200/70 bg-ink-950 text-white">
+  <div class="section-shell">
+    <p class="section-label !text-blue-300">Why trust NetSubSpec</p>
+    <h2 class="section-title !text-white">Grounded in formal reasoning and operator evidence</h2>
+
+    <div class="mt-12 grid gap-8 lg:grid-cols-3">
+      <article class="rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+        <h3 class="font-display text-lg font-semibold">Formally grounded</h3>
+        <p class="mt-3 text-sm leading-relaxed text-ink-200">
+          A single-location update that satisfies its localized subspecification preserves the verified stable behavior under the paper's assumptions — while other configuration locations remain fixed. Violating a subspecification does not necessarily break the global property.
+        </p>
+      </article>
+
+      <article class="rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+        <h3 class="font-display text-lg font-semibold">Validated with users</h3>
+        <dl class="mt-4 grid grid-cols-2 gap-4">
+          <div>
+            <dt class="text-3xl font-semibold tabular-nums text-white">{userStudyMetrics.participants}</dt>
+            <dd class="mt-1 text-xs text-ink-300">participants</dd>
+          </div>
+          <div>
+            <dt class="text-3xl font-semibold tabular-nums text-white">{userStudyMetrics.accuracyImprovement}</dt>
+            <dd class="mt-1 text-xs text-ink-300">higher task accuracy</dd>
+          </div>
+          <div>
+            <dt class="text-3xl font-semibold tabular-nums text-white">{userStudyMetrics.timeReduction}</dt>
+            <dd class="mt-1 text-xs text-ink-300">lower completion time</dd>
+          </div>
+          <div>
+            <dt class="text-3xl font-semibold tabular-nums text-white">{userStudyMetrics.frequentUseInterest}</dt>
+            <dd class="mt-1 text-xs text-ink-300">interested in frequent use</dd>
+          </div>
+        </dl>
+        <p class="mt-4 text-xs text-ink-300">
+          {userStudyMetrics.operators} professional network operators and {userStudyMetrics.students} networking graduate students.
+        </p>
+      </article>
+
+      <article class="rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+        <h3 class="font-display text-lg font-semibold">Evaluated at scale</h3>
+        <dl class="mt-4 space-y-4">
+          <div>
+            <dt class="text-3xl font-semibold tabular-nums text-white">{userStudyMetrics.internet2Minutes} min</dt>
+            <dd class="mt-1 text-xs text-ink-300">on the Internet2 configuration</dd>
+          </div>
+          <div>
+            <dt class="text-3xl font-semibold tabular-nums text-white">{userStudyMetrics.fiveHundredRouterMinutes} min</dt>
+            <dd class="mt-1 text-xs text-ink-300">on a 500-router network</dd>
+          </div>
+        </dl>
+        <a href={projectLinks.paper} class="mt-4 inline-block text-sm font-medium text-blue-300 hover:text-white">
+          Read the evaluation section →
+        </a>
+      </article>
+    </div>
+  </div>
+</section>

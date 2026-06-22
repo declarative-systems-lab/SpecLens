@@ -1,0 +1,378 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ConfigExplainer from '../components/config-explainer/ConfigExplainer.tsx';
+import {
+  siteMeta,
+  whyQuestions,
+  capabilities,
+  workflowSteps,
+  userStudyMetrics,
+  contact,
+} from '../config/siteContent';
+import { projectLinks } from '../config/projectLinks';
+import { coreResearch, researchExtensions, researchTree } from '../config/extensions';
+---
+
+<BaseLayout title="NetSubSpec" description={siteMeta.description}>
+  <div class="home">
+    <div class="container banner-container">
+      <h1>{siteMeta.name}</h1>
+      <p class="hero-lead">{siteMeta.tagline}</p>
+      <p>{siteMeta.description}</p>
+      <p class="hero-paper">
+        Based on the {siteMeta.corePaper.venue} paper<br />
+        <em>{siteMeta.corePaper.title}</em>
+      </p>
+      <p class="hero-links">
+        <a href={projectLinks.paper}>Paper</a>
+        {' · '}
+        {
+          projectLinks.github === '#' ? (
+            <span class="hero-links__pending">Code (coming soon)</span>
+          ) : (
+            <a href={projectLinks.github}>Code</a>
+          )
+        }
+      </p>
+      <p class="hero-contact">
+        Contact: <a href={`mailto:${contact.email}`}>{contact.email}</a> · {contact.affiliation}
+      </p>
+    </div>
+
+    <div class="bg-gradient-1" aria-hidden="true"></div>
+
+    <div class="container">
+      <section id="why" class="section">
+        <div class="section-title"><h2>Why NetSubSpec</h2></div>
+        <div class="content-row">
+          <p>
+            Network verification tells you whether a configuration is correct. NetSubSpec explains
+            why.
+          </p>
+        </div>
+        <ul class="content-list">
+          {whyQuestions.map((q) => <li>{q}</li>)}
+        </ul>
+      </section>
+
+      <section id="demo" class="section">
+        <div class="section-title">
+          <h2>Inspect localized explanations on real configuration</h2>
+        </div>
+        <div class="content-row">
+          <p>
+            A lightweight public preview of the explanation interface on a private-prefix filtering
+            task from our operator study — switch between R1, R2, and R3 configurations. No
+            participant login or data collection.
+          </p>
+        </div>
+        <ConfigExplainer client:load />
+        <div class="demo-footer">
+          <a href={projectLinks.multiSubspec} target="_blank" rel="noopener noreferrer">
+            Explore Multi-Subspec Demo →
+          </a>
+          <div class="legend-inline">
+            <span><span class="legend-swatch legend-swatch--field"></span> Field subspec</span>
+            <span><span class="legend-swatch legend-swatch--line"></span> Line-level</span>
+            <span><span class="legend-swatch legend-swatch--empty"></span> Unrestricted</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="capabilities" class="section">
+        <div class="section-title"><h2>Capabilities</h2></div>
+        {
+          capabilities.map((cap) => (
+            <div class="content-row">
+              <h4>{cap.title}</h4>
+              <p>{cap.description}</p>
+            </div>
+          ))
+        }
+      </section>
+
+      <section id="workflow" class="section">
+        <div class="section-title"><h2>Workflow</h2></div>
+        <div class="content-row">
+          <p>
+            NetSubSpec complements existing network verification, synthesis, and repair systems
+            rather than replacing them.
+          </p>
+        </div>
+        <div class="workflow-layout">
+          <div class="workflow-col">
+            <figure class="figure-box figure-box--fill">
+              <img src="/figures/fig-overview-new.png" alt="NetSubSpec workflow overview" loading="lazy" />
+              <figcaption>
+                Subspecification generation flow, using stable control-plane behavior as
+                router-level subspecification.
+              </figcaption>
+            </figure>
+            <ol class="workflow-steps-list">
+              {
+                workflowSteps.map((step, i) => (
+                  <li>
+                    <span class="step-num">{i + 1}</span>
+                    <div>
+                      <strong>{step.title}</strong>
+                      <p>{step.description}</p>
+                    </div>
+                  </li>
+                ))
+              }
+            </ol>
+          </div>
+          <figure class="figure-box figure-box--fill">
+            <img src="/figures/fig-pipeline-new.png" alt="NetSubSpec technical pipeline" loading="lazy" />
+            <figcaption>Example of field-level subspec derivation.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="demos" class="section">
+        <div class="section-title"><h2>Demos</h2></div>
+        <div class="demo-grid">
+          <div class="content-row">
+            <h4>User-Study Demo</h4>
+            <p>
+              Explore localized subspecifications on configuration reasoning tasks from our operator
+              study.
+            </p>
+            <p>
+              <a href={projectLinks.userStudy} target="_blank" rel="noopener noreferrer">Open demo →</a>
+            </p>
+          </div>
+          <div class="content-row">
+            <h4>Multi-Subspec Demo</h4>
+            <p>
+              Explore the configuration-maintenance tasks used in our user study and dependencies
+              among multiple configuration locations.
+            </p>
+            <p>
+              <a href={projectLinks.multiSubspec} target="_blank" rel="noopener noreferrer">Open demo →</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="trust" class="section">
+        <div class="section-title">
+          <h2>Why Trust NetSubSpec</h2>
+        </div>
+
+        <div class="eval-block">
+          <h4 class="eval-subtitle eval-subtitle--first">Validated with Users</h4>
+          <p class="eval-lead">
+            We evaluated NetSubSpec with {userStudyMetrics.participants} participants ({userStudyMetrics.operators} professional network operators and {userStudyMetrics.students} graduate students) on four configuration reasoning tasks.
+          </p>
+          <div class="eval-highlights">
+            <span><strong>{userStudyMetrics.accuracyImprovement}</strong> accuracy improvement</span>
+            <span><strong>{userStudyMetrics.timeReduction}</strong> time reduction</span>
+          </div>
+
+          <figure class="figure-box figure-box--wide">
+            <div class="figure-legend">
+              <img src="/figures/fig-legend-userstudy.png" alt="User study figure legend" loading="lazy" />
+            </div>
+            <div class="eval-grid">
+              <figure>
+                <img src="/figures/fig-userstudy-accuracy-combined.png" alt="Task accuracy (combined)" loading="lazy" />
+                <figcaption>Task accuracy (combined).</figcaption>
+              </figure>
+              <figure>
+                <img src="/figures/fig-userstudy-accuracy-academia.png" alt="Task accuracy (grad students)" loading="lazy" />
+                <figcaption>Task accuracy (grad students).</figcaption>
+              </figure>
+              <figure>
+                <img src="/figures/fig-userstudy-accuracy-industry.png" alt="Task accuracy (operators)" loading="lazy" />
+                <figcaption>Task accuracy (operators).</figcaption>
+              </figure>
+              <figure>
+                <img src="/figures/fig-userstudy-time-combined.png" alt="Task completion time (combined)" loading="lazy" />
+                <figcaption>Task completion time (combined).</figcaption>
+              </figure>
+              <figure>
+                <img src="/figures/fig-userstudy-time-academia.png" alt="Task completion time (grad students)" loading="lazy" />
+                <figcaption>Task completion time (grad students).</figcaption>
+              </figure>
+              <figure>
+                <img src="/figures/fig-userstudy-time-industry.png" alt="Task completion time (operators)" loading="lazy" />
+                <figcaption>Task completion time (operators).</figcaption>
+              </figure>
+            </div>
+            <p class="figure-caption">
+              User study task accuracy and completion time.
+            </p>
+          </figure>
+
+          <div class="content-row eval-copy">
+            <p>
+              Participants scored higher when explanations were available. Combined accuracy rose from
+              1.83 to 2.67 points (+52% relative improvement on the paper scale). Task 4 showed the
+              largest gain (+78%).
+            </p>
+            <p>
+              Overall median completion time dropped by 24% (9.5 → 7.1 minutes). Graduate students saw
+              nearly 2× speedup with subspecs; operators benefited most on the hardest task.
+            </p>
+          </div>
+
+          <h4 class="eval-subtitle">System Usability Scale (SUS)</h4>
+          <p class="eval-lead">
+            Mean SUS was 62.3/100 overall (71.3 academia, 57.5 industry). 70% of participants
+            reported they would use localized subspecifications frequently.
+          </p>
+          <figure class="figure-box figure-box--wide">
+            <div class="figure-legend">
+              <img src="/figures/fig-legend-sus.png" alt="SUS figure legend" loading="lazy" />
+            </div>
+            <div class="eval-grid eval-grid--3">
+              <figure>
+                <img src="/figures/fig-userstudy-sus-combined.png" alt="SUS (combined)" loading="lazy" />
+                <figcaption>System usability scale (combined).</figcaption>
+              </figure>
+              <figure>
+                <img src="/figures/fig-userstudy-sus-academia.png" alt="SUS (grad students)" loading="lazy" />
+                <figcaption>System usability scale (grad students).</figcaption>
+              </figure>
+              <figure>
+                <img src="/figures/fig-userstudy-sus-industry.png" alt="SUS (operators)" loading="lazy" />
+                <figcaption>System usability scale (operators).</figcaption>
+              </figure>
+            </div>
+          </figure>
+
+          <h4 class="eval-subtitle">Evaluated at Scale</h4>
+          <p class="eval-lead">
+            We benchmarked subspecification generation on real and synthetic network configurations.
+          </p>
+          <div class="eval-highlights">
+            <span><strong>{userStudyMetrics.internet2Minutes} min</strong> Internet2</span>
+            <span><strong>{userStudyMetrics.fiveHundredRouterMinutes} min</strong> 500-router network</span>
+          </div>
+
+          <figure class="figure-box figure-box--wide">
+            <div class="figure-legend">
+              <img src="/figures/fig_benchmark_lineplot_legend.png" alt="Scalability figure legend" loading="lazy" />
+            </div>
+            <div class="eval-grid eval-grid--3">
+              <figure>
+                <img src="/figures/fig_benchmark_lineplot_fattrees.png" alt="Scalability varying network size" loading="lazy" />
+                <figcaption>Vary network size.</figcaption>
+              </figure>
+              <figure>
+                <img src="/figures/fig_benchmark_lineplot_synthetic.png" alt="Scalability varying number of prefixes" loading="lazy" />
+                <figcaption>Vary #prefixes.</figcaption>
+              </figure>
+              <figure>
+                <img src="/figures/fig_benchmark_lineplot_cores.png" alt="Scalability varying thread count" loading="lazy" />
+                <figcaption>Vary #threads (parallelism).</figcaption>
+              </figure>
+            </div>
+            <p class="figure-caption">
+              Scalability of subspecification generation under different dimensions.
+            </p>
+          </figure>
+
+          <figure class="figure-box figure-box--wide figure-box--runtime">
+            <div class="figure-legend">
+              <img src="/figures/fig_legend_benchmarks_time.png" alt="Benchmark runtime legend" loading="lazy" />
+            </div>
+            <div class="figure-runtime-chart">
+              <img src="/figures/fig_benchmark_times.png" alt="Run time on each network configuration" loading="lazy" />
+            </div>
+            <p class="figure-caption">Run time on each network configuration.</p>
+          </figure>
+
+          <p class="content-row" style="text-align:center;margin-top:1.5rem">
+            <a href={projectLinks.paper}>Read the full evaluation →</a>
+          </p>
+        </div>
+      </section>
+
+      <section id="research" class="section">
+        <div class="section-title"><h2>Research Extensions</h2></div>
+        <div class="content-row">
+          <p>
+            NetSubSpec is the umbrella project; the SIGCOMM paper is the core work. Subsequent work
+            extends localized subspecifications to repair spaces and failures.
+          </p>
+        </div>
+        <ul class="research-tabs" role="tablist">
+          {
+            researchTree.map((item, i) => (
+              <li>
+                <a
+                  href="#"
+                  class:list={[i === 0 && 'active']}
+                  data-research-tab={item.id}
+                  role="tab"
+                  aria-selected={i === 0 ? 'true' : 'false'}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+
+        <div class="research-panel" data-research-panel="core" role="tabpanel">
+          <div class="content-row">
+            <h4><a href={coreResearch.pdf}>{coreResearch.title}</a></h4>
+            <p class="research-meta">{coreResearch.venue}</p>
+            <p>{coreResearch.description}</p>
+          </div>
+        </div>
+
+        {
+          researchExtensions.map((ext) => (
+            <div class="research-panel" data-research-panel={ext.id} role="tabpanel" hidden>
+              <div class="content-row">
+                <h4>{ext.pdf ? <a href={ext.pdf}>{ext.title}</a> : ext.title}</h4>
+                <p class="research-meta">
+                  {ext.venue}
+                  {ext.date ? ` · ${ext.date}` : ''}
+                  {ext.location ? ` · ${ext.location}` : ''}
+                </p>
+                {ext.authors.length > 0 && <p class="research-meta">{ext.authors.join(', ')}</p>}
+                <p>{ext.description}</p>
+                <p>
+                  {ext.pdf && <a href={ext.pdf}>PDF</a>}
+                  {ext.doi && (
+                    <>
+                      {ext.pdf && ' · '}
+                      <a href={ext.doi} target="_blank" rel="noopener noreferrer">DOI</a>
+                    </>
+                  )}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </section>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('[data-research-tab]').forEach((tab) => {
+      tab.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = tab.getAttribute('data-research-tab');
+        if (!id) return;
+
+        document.querySelectorAll('[data-research-tab]').forEach((t) => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+
+        document.querySelectorAll('[data-research-panel]').forEach((panel) => {
+          const panelId = panel.getAttribute('data-research-panel');
+          if (panelId === id) panel.removeAttribute('hidden');
+          else panel.setAttribute('hidden', '');
+        });
+      });
+    });
+  </script>
+</BaseLayout>
