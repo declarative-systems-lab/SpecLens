@@ -1,4 +1,5 @@
 import { projectLinks } from './projectLinks';
+import { assetUrl } from '../utils/assetUrl';
 
 export const siteMeta = {
   name: 'SpecLens',
@@ -12,10 +13,10 @@ export const siteMeta = {
 } as const;
 
 export const navItems = [
-  { label: 'Why SpecLens', href: '/#why' },
-  { label: 'Demo', href: '/#demo' },
-  { label: 'Why Trust', href: '/#trust' },
-  { label: 'Research', href: '/#research' },
+  { label: 'Why SpecLens', href: assetUrl('/#why') },
+  { label: 'Demo', href: assetUrl('/#demo') },
+  { label: 'Why Trust', href: assetUrl('/#trust') },
+  { label: 'Research', href: assetUrl('/#research') },
   { label: 'GitHub', href: projectLinks.github },
 ] as const;
 
