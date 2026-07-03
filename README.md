@@ -1,25 +1,9 @@
+```md
 # SpecLens Website
 
 Project website for **SpecLens**.
 
-Built with Astro and a small React island for the interactive configuration explainer.
+## Website
 
-## Development
-
-```bash
-cd website2
-npm install
-npm run dev
+[Visit the SpecLens Website](https://declarative-systems-lab.github.io/SpecLens/)
 ```
-
-Open http://localhost:4321
-
-## Build
-
-```bash
-npm run build
-```
-
-Output is in `dist/`.
-
-The user-study app stays at https://netsubspec.netlify.app — link only.
