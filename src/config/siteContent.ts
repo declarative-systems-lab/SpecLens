@@ -1,27 +1,38 @@
+import { projectLinks } from './projectLinks';
+
 export const siteMeta = {
-  name: 'NetSubSpec',
+  name: 'SpecLens',
   tagline: 'Understand why your network configuration is correct.',
   description:
-    'NetSubSpec is an open-source network configuration explanation tool. It derives localized, sound constraints that explain how individual routers, configuration lines, and fields preserve verified network behavior.',
+    'SpecLens is an open-source network configuration explanation tool. It derives localized, sound constraints that explain how individual routers, configuration lines, and fields preserve verified network behavior.',
   corePaper: {
     title: 'Explainable Network Verification via Localized Subspecification',
     venue: 'ACM SIGCOMM 2026',
-    authors: null as string[] | null,
   },
 } as const;
 
 export const navItems = [
-  { label: 'Why NetSubSpec', href: '/#why' },
-  { label: 'Capabilities', href: '/#capabilities' },
-  { label: 'Demos', href: '/#demos' },
+  { label: 'Why SpecLens', href: '/#why' },
+  { label: 'Demo', href: '/#demo' },
+  { label: 'Why Trust', href: '/#trust' },
   { label: 'Research', href: '/#research' },
-  { label: 'GitHub', href: '#', disabled: true },
+  { label: 'GitHub', href: projectLinks.github },
 ] as const;
+
+/** Set to true to show the Workflow section on the homepage. */
+export const showWorkflowSection = false;
 
 export const contact = {
   email: 'hxchen@shanghaitech.edu.cn',
   affiliation: 'ShanghaiTech University',
 } as const;
+
+export const trustTabs = [
+  { id: 'users', label: 'Validated with Users' },
+  { id: 'sus', label: 'System Usability Scale (SUS)' },
+  { id: 'scalability', label: 'Scalability' },
+  { id: 'runtime', label: 'Runtime' },
+] as const;
 
 export const userStudyMetrics = {
   participants: 23,
@@ -30,7 +41,15 @@ export const userStudyMetrics = {
   accuracyImprovement: '52%',
   timeReduction: '24%',
   frequentUseInterest: '70%',
+} as const;
+
+/** Benchmark numbers from sec_eval.tex (RQ3 efficiency + RQ4 scalability). */
+export const benchmarkMetrics = {
+  /** Subspec runtime on Internet2 (Figure: Run time on each network configuration). */
   internet2Minutes: 21,
+  /** Subspec runtime on Bics, Columbus, USCarrier (same figure). */
+  syntheticSecondsRange: '12–30',
+  /** Subspec runtime at 500 routers when varying network size (scalability line plot). */
   fiveHundredRouterMinutes: 81,
 } as const;
 
@@ -39,34 +58,6 @@ export const whyQuestions = [
   'What must each element preserve?',
   'Which local edits are safe?',
   'Which fields are irrelevant?',
-] as const;
-
-export const capabilities = [
-  {
-    title: 'Configuration relevance',
-    description:
-      'Identify the configuration lines and fields that contribute to a verified network property.',
-  },
-  {
-    title: 'Localized correctness constraints',
-    description:
-      'Explain what values or behavior a configuration location must preserve, from router-level contracts down to field-level predicates.',
-  },
-  {
-    title: 'Safe single-location updates',
-    description:
-      'Check whether a local edit preserves verified stable behavior, assuming all other configuration locations remain unchanged.',
-  },
-  {
-    title: 'Cross-router dependencies',
-    description:
-      'Expose downstream filtering and routing decisions that constrain an upstream configuration element.',
-  },
-  {
-    title: 'Router-, route-map-, line-, and field-level explanations',
-    description:
-      'Explain behavior at multiple granularities using complementary subspecification forms.',
-  },
 ] as const;
 
 export const workflowSteps = [

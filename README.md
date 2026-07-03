@@ -1,6 +1,6 @@
-# NetSubSpec Website
+# SpecLens Website
 
-Batfish-style project website for **NetSubSpec**.
+Project website for **SpecLens**.
 
 Built with Astro and a small React island for the interactive configuration explainer.
 
@@ -12,15 +12,14 @@ npm install
 npm run dev
 ```
 
+Open http://localhost:4321
+
 ## Build
 
 ```bash
 npm run build
-npm run preview
 ```
 
-## Configuration
-
-Edit `src/config/projectLinks.ts` for demo URLs, GitHub, and PDF paths.
+Output is in `dist/`.
 
 The user-study app stays at https://netsubspec.netlify.app — link only.

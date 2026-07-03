@@ -1,5 +1,5 @@
 import { useMemo, useRef, useState } from 'react';
-import { question2Example } from './question2Data';
+import { question3Example } from './question3Data';
 import { useSubspecTooltip } from './useSubspecTooltip';
 import { buildSubspecMaps, parseConfigWithSubspecs } from './userstudyRender';
 import './config-explainer.css';
@@ -12,16 +12,15 @@ export default function ConfigExplainer() {
   const subspecMaps = useMemo(
     () =>
       buildSubspecMaps(
-        question2Example.fieldSubspecs,
-        question2Example.lineSubspecs,
-        question2Example.fieldSubspecsTrans,
-        question2Example.lineSubspecsTrans,
-        false,
+        question3Example.fieldSubspecs,
+        question3Example.lineSubspecs,
+        question3Example.fieldSubspecsTrans,
+        question3Example.lineSubspecsTrans,
       ),
     [],
   );
 
-  const activeRouter = question2Example.routers[activeIndex];
+  const activeRouter = question3Example.routers[activeIndex];
 
   const configLines = useMemo(
     () => parseConfigWithSubspecs(activeRouter.configContent, subspecMaps, 'en'),
@@ -35,13 +34,13 @@ export default function ConfigExplainer() {
           <p className="explainer-property__label">Network-wide property</p>
           <div
             className="explainer-property__text specification-content"
-            dangerouslySetInnerHTML={{ __html: question2Example.specificationHtml }}
+            dangerouslySetInnerHTML={{ __html: question3Example.specificationHtml }}
           />
         </div>
 
         <div className="explainer-topology">
           <img
-            src={question2Example.topologyImage}
+            src={question3Example.topologyImage}
             alt="Network topology for the example configuration"
             className="explainer-topology__image"
           />
@@ -51,7 +50,7 @@ export default function ConfigExplainer() {
       <div className="explainer-main">
         <div className="explainer-toolbar">
           <div className="explainer-router-tabs" role="tablist" aria-label="Router configurations">
-            {question2Example.routers.map((router, index) => (
+            {question3Example.routers.map((router, index) => (
               <button
                 key={router.router}
                 type="button"

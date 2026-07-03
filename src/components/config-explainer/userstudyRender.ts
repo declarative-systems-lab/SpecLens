@@ -1,3 +1,5 @@
+import { highlightTranslationText } from './highlightTranslation';
+
 type Locale = 'en' | 'zh';
 
 export interface SubspecMaps {
@@ -11,33 +13,36 @@ export interface SubspecMaps {
 function parseSubspecFile(
   content: string,
   marker: 'Config Variable:' | 'Line Group:',
-  takeLastTranslation = false,
 ): Record<string, string> {
   const data: Record<string, string> = {};
   let current: string | null = null;
-  const translations: string[] = [];
+  let latest: string | null = null;
 
   for (const line of content.split('\n')) {
     if (line.startsWith(marker)) {
-      if (current && translations.length > 0) {
-        data[current] = takeLastTranslation
-          ? translations[translations.length - 1]
-          : translations[0];
+      if (current && latest !== null) {
+        data[current] = latest;
       }
       current = line.split(`${marker} `)[1]?.trim() ?? null;
-      translations.length = 0;
+      latest = null;
     } else if (line.trim().startsWith('1.') && current) {
-      translations.push(line.trim().slice(2).trim());
+      latest = line.trim().slice(2).trim();
     }
   }
 
-  if (current && translations.length > 0) {
-    data[current] = takeLastTranslation
-      ? translations[translations.length - 1]
-      : translations[0];
+  if (current && latest !== null) {
+    data[current] = latest;
   }
 
   return data;
+}
+
+function applyTranslationHighlights(data: Record<string, string>): Record<string, string> {
+  const highlighted: Record<string, string> = {};
+  for (const [key, value] of Object.entries(data)) {
+    highlighted[key] = highlightTranslationText(value);
+  }
+  return highlighted;
 }
 
 export function buildSubspecMaps(
@@ -45,19 +50,14 @@ export function buildSubspecMaps(
   lineSubspecContent: string,
   configSubspecTransContent: string,
   lineSubspecTransContent: string,
-  takeLastTranslation = false,
 ): SubspecMaps {
   const configSubspecData = parseSubspecFile(configSubspecContent, 'Config Variable:');
   const lineSubspecData = parseSubspecFile(lineSubspecContent, 'Line Group:');
-  const configSubspecTransData = parseSubspecFile(
-    configSubspecTransContent,
-    'Config Variable:',
-    takeLastTranslation,
+  const configSubspecTransData = applyTranslationHighlights(
+    parseSubspecFile(configSubspecTransContent, 'Config Variable:'),
   );
-  const lineSubspecTransData = parseSubspecFile(
-    lineSubspecTransContent,
-    'Line Group:',
-    takeLastTranslation,
+  const lineSubspecTransData = applyTranslationHighlights(
+    parseSubspecFile(lineSubspecTransContent, 'Line Group:'),
   );
   const lineSubspecNames = new Set<string>();
 
@@ -88,6 +88,22 @@ function escapeAttribute(html: string): string {
   return html.replace(/"/g, '&quot;');
 }
 
+function processDisplaySubspec(subspecText: string, subspecName: string, maps: SubspecMaps): string {
+  if (subspecName in maps.configSubspecData) {
+    return subspecText.replace(/Config_[a-zA-Z0-9_]+/g, (full) => {
+      if (full.endsWith('__ip')) return 'VAR_IP';
+      if (full.endsWith('__mask')) return 'VAR_MASK';
+      return 'VAR';
+    });
+  }
+
+  return subspecText.replace(/Config_[a-zA-Z0-9_]+/g, (full) => {
+    const parts = full.split('_');
+    return parts.length > 1 ? `VAR_${parts[parts.length - 1].toUpperCase()}` : 'VAR';
+  });
+}
+
+/** Matches userstudy generate_test_html.py client-side tooltip format. */
 export function formatSubspecForDisplay(
   subspecText: string,
   subspecName: string,
@@ -96,73 +112,13 @@ export function formatSubspecForDisplay(
   locale: Locale,
 ): string {
   const isZh = locale === 'zh';
-  const labels = isZh
-    ? {
-        missing: '没有找到子规约<br>─────────────────────<br>none',
-        emptyHeader: '配置字段说明',
-        emptyBody: '无特殊约束条件',
-        fieldType: 'Field-Level',
-        lineType: 'Line-Level',
-        fieldLabel: '配置字段',
-        enabled: '✅ 启用此配置项',
-        disabled: '❌ 禁用此配置项',
-        ip: '🌐 IP地址/网络前缀配置',
-        ipDetail: '指定特定的IP地址或网络范围',
-        numeric: '🔢 数值配置约束',
-        numericDetail: '设置特定的数值参数',
-        range: '📏 范围约束条件',
-        rangeDetail: '设置数值范围限制',
-        exclude: '🚫 排除条件',
-        excludeDetail: '排除特定的配置项',
-        general: '⚙️ 配置约束条件',
-        generalDetail: '应用特定的配置规则',
-      }
-    : {
-        missing: 'No subspec found<br>─────────────────────<br>none',
-        emptyHeader: 'Field description',
-        emptyBody: 'No special constraints',
-        fieldType: 'Field-Level',
-        lineType: 'Line-Level',
-        fieldLabel: 'field',
-        enabled: '✅ This configuration item is enabled',
-        disabled: '❌ This configuration item is disabled',
-        ip: '🌐 IP address / prefix configuration',
-        ipDetail: 'Specifies a particular IP address or network range',
-        numeric: '🔢 Numeric constraint',
-        numericDetail: 'Sets a specific numeric parameter',
-        range: '📏 Range constraint',
-        rangeDetail: 'Sets numeric range limits',
-        exclude: '🚫 Exclusion condition',
-        excludeDetail: 'Excludes a specific configuration item',
-        general: '⚙️ Configuration constraint',
-        generalDetail: 'Applies a specific configuration rule',
-      };
 
-  if (isMissing) return labels.missing;
-
-  if (subspecText === 'No subspec found' || subspecText === 'empty') {
-    return `<div class="tooltip-header">${labels.emptyHeader}</div><div class="tooltip-simple">${labels.emptyBody}</div>`;
+  if (isMissing) {
+    const missingText = isZh ? '没有找到子规约' : 'No subspec found';
+    return `<div class="tooltip-translated">${missingText}</div><div class="tooltip-separator">─────────────────────</div><div class="tooltip-formula">none</div>`;
   }
 
-  let processed = subspecText;
-  let fieldName = 'VAR';
-  let subspecType = labels.fieldType;
-
-  if (subspecName in maps.configSubspecData) {
-    processed = processed.replace(/Config_[a-zA-Z0-9_]+/g, (full) => {
-      if (full.endsWith('__ip')) return 'VAR_IP';
-      if (full.endsWith('__mask')) return 'VAR_MASK';
-      return 'VAR';
-    });
-    subspecType = labels.fieldType;
-  } else {
-    processed = processed.replace(/Config_[a-zA-Z0-9_]+/g, (full) => {
-      const parts = full.split('_');
-      return parts.length > 1 ? `VAR_${parts[parts.length - 1].toUpperCase()}` : 'VAR';
-    });
-    fieldName = 'VAR_XXX';
-    subspecType = labels.lineType;
-  }
+  const displaySubspec = processDisplaySubspec(subspecText, subspecName, maps);
 
   let subspecTrans: string | undefined;
   if (subspecName in maps.configSubspecData && maps.configSubspecTransData[subspecName]) {
@@ -171,32 +127,11 @@ export function formatSubspecForDisplay(
     subspecTrans = maps.lineSubspecTransData[subspecName];
   }
 
-  const header = `<div class="tooltip-header">${subspecType} ${labels.fieldLabel}: ${fieldName}</div>`;
-  const transBlock = subspecTrans
-    ? `<div class="tooltip-translated">${subspecTrans}</div><div class="tooltip-separator">─────────────────────</div>`
-    : '';
-  const formulaBlock = `<div class="tooltip-formula">${escapeHtml(processed)}</div>`;
-
-  const lower = processed.toLowerCase();
-  if (lower.includes('true') && !lower.includes('not')) {
-    return `${header}<div class="tooltip-simple">${labels.enabled}</div>${transBlock}${formulaBlock}`;
-  }
-  if (lower.includes('false')) {
-    return `${header}<div class="tooltip-simple">${labels.disabled}</div>${transBlock}${formulaBlock}`;
-  }
-  if (processed.includes('=') && processed.includes('#')) {
-    const simple = processed.includes('extract') ? labels.ip : labels.numeric;
-    const detail = processed.includes('extract') ? labels.ipDetail : labels.numericDetail;
-    return `${header}<div class="tooltip-simple">${simple}</div><div class="tooltip-detail">${detail}</div>${transBlock}${formulaBlock}`;
-  }
-  if (processed.includes('>=') || processed.includes('<=')) {
-    return `${header}<div class="tooltip-simple">${labels.range}</div><div class="tooltip-detail">${labels.rangeDetail}</div>${transBlock}${formulaBlock}`;
-  }
-  if (lower.includes('not')) {
-    return `${header}<div class="tooltip-simple">${labels.exclude}</div><div class="tooltip-detail">${labels.excludeDetail}</div>${transBlock}${formulaBlock}`;
+  if (subspecTrans) {
+    return `<div class="tooltip-translated">${subspecTrans}</div><div class="tooltip-separator">─────────────────────</div><div class="tooltip-formula">${escapeHtml(displaySubspec)}</div>`;
   }
 
-  return `${header}<div class="tooltip-simple">${labels.general}</div><div class="tooltip-detail">${labels.generalDetail}</div>${transBlock}${formulaBlock}`;
+  return `<div class="tooltip-formula">${escapeHtml(displaySubspec)}</div>`;
 }
 
 function processConfigLine(line: string, maps: SubspecMaps, locale: Locale): string {
@@ -217,10 +152,6 @@ function processConfigLine(line: string, maps: SubspecMaps, locale: Locale): str
 
     let cssClass = 'config-field';
     if (maps.lineSubspecNames.has(subspecName)) cssClass += ' line-level';
-    const isEmpty =
-      subspec === 'empty' ||
-      /irrelevant\s*\/\s*redundant/i.test(subspec) ||
-      subspec.includes('无限制');
     if (isMissing) cssClass += ' missing-subspec';
     else if (subspec === 'empty') cssClass += ' empty-subspec';
 

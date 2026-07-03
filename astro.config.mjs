@@ -3,5 +3,6 @@ import react from '@astrojs/react';
 
 export default defineConfig({
   integrations: [react()],
-  site: 'https://netsubspec.org',
+  site: 'https://declarative-systems-lab.github.io',
+  base: '/SpecLens/',
 });

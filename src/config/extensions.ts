@@ -20,20 +20,34 @@ export interface CoreResearch {
   id: string;
   title: string;
   venue: string;
+  date: string;
+  location: string;
+  authors: string[];
   description: string;
   pdf: string;
-  authors: string[] | null;
+  doi: string;
   isCore: true;
 }
 
 export const coreResearch: CoreResearch = {
   id: 'core',
   title: 'Explainable Network Verification via Localized Subspecification',
-  venue: 'ACM SIGCOMM 2026',
+  venue: "SIGCOMM '26",
+  date: 'August 17–21, 2026',
+  location: 'Denver, CO, USA',
+  authors: [
+    'Yongzheng Zhang',
+    'Yaxuan Lin',
+    'Haoxian Chen',
+    'Ruize Ma',
+    'Amirmohammad Nazari',
+    'Mukund Raghothaman',
+    'Peng Zhang',
+  ],
   description:
     'Introduces localized subspecifications as a sound explanation layer for verified network configurations: a scalable two-phase algorithm, a user study with network operators, and evaluation on Internet2 and large synthetic networks.',
   pdf: projectLinks.paper,
-  authors: null,
+  doi: 'https://doi.org/10.1145/3789240.382236',
   isCore: true,
 };
 

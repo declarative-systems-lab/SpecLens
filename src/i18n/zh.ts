@@ -19,7 +19,7 @@ export const zh: Messages = {
     label: '开源研究项目',
     tagline: '理解网络配置为何正确。',
     description:
-      'NetSubSpec 是一个开源的网络配置解释工具。它为路由器、配置行和字段推导局部化、可证明的约束，解释它们如何保持已验证的网络行为。',
+      'SpecLens 是一个开源的网络配置解释工具。它为路由器、配置行和字段推导局部化、可证明的约束，解释它们如何保持已验证的网络行为。',
     tryDemo: '体验演示',
     viewGithub: '查看 GitHub',
     paperVenue: '基于 ACM SIGCOMM 2026 论文',
@@ -27,8 +27,8 @@ export const zh: Messages = {
     pipelineLabel: '解释流程',
   },
   why: {
-    label: '为什么需要 NetSubSpec',
-    title: '网络验证告诉你配置是否正确；NetSubSpec 解释为什么。',
+    label: '为什么需要 SpecLens',
+    title: '网络验证告诉你配置是否正确；SpecLens 解释为什么。',
     lead: '验证成功后，运维人员仍需要知道哪些配置元素重要、各自必须保持什么、以及哪些局部修改仍然安全。',
     questionsTitle: '验证之后仍待回答的问题',
     q1: '哪些配置元素使该性质成立？',
@@ -37,7 +37,7 @@ export const zh: Messages = {
     q4: '哪些行或字段与该性质无关？',
     q5: '是否存在对其他路由器策略的依赖？',
     summary:
-      'NetSubSpec 将配置位置与局部正确性约束关联，使运维人员能够针对配置片段推理，而无需手动模拟整个网络。',
+      'SpecLens 将配置位置与局部正确性约束关联，使运维人员能够针对配置片段推理，而无需手动模拟整个网络。',
     before: '之前',
     after: '之后',
   },
@@ -55,21 +55,21 @@ export const zh: Messages = {
   },
   capabilities: {
     label: '核心能力',
-    title: 'NetSubSpec 能解释什么',
+    title: 'SpecLens 能解释什么',
     lead: 'SIGCOMM 核心系统及其当前实现所支持的能力——不包括修复空间刻画、容错子规约等研究扩展。',
   },
   workflow: {
     label: '工作流程',
-    title: 'NetSubSpec 如何融入网络运维流程',
-    lead: 'NetSubSpec 补充而非取代现有的网络验证、合成与修复系统。',
-    overviewCaption: 'NetSubSpec 在网络运维流程中的位置（论文原图）。',
+    title: 'SpecLens 如何融入网络运维流程',
+    lead: 'SpecLens 补充而非取代现有的网络验证、合成与修复系统。',
+    overviewCaption: 'SpecLens 在网络运维流程中的位置（论文原图）。',
     pipelineCaption: '提取局部子规约的两阶段流程（论文原图）。',
     technicalTitle: '技术流程',
   },
   userStudy: {
     label: '用户研究',
     title: '与网络运维人员及研究生共同验证',
-    lead: '我们在 23 名参与者（15 名专业网络运维人员与 8 名网络方向研究生）上，通过四项配置推理任务评估了 NetSubSpec。',
+    lead: '我们在 23 名参与者（15 名专业网络运维人员与 8 名网络方向研究生）上，通过四项配置推理任务评估了 SpecLens。',
     accuracyTitle: '局部子规约提升任务准确率',
     accuracyLead:
       '提供解释后参与者得分更高。综合准确率从 1.83 提升至 2.67（论文量表下相对提升 52%）。任务 4 提升最大（+78%）。',
@@ -98,7 +98,7 @@ export const zh: Messages = {
     extensionsTitle: '研究扩展',
     peopleTitle: '团队与联系',
     peopleLead:
-      'NetSubSpec 由上海科技大学团队开发。SIGCOMM 核心论文作者将在去匿名化后公布。',
+      'SpecLens 由上海科技大学团队开发。SIGCOMM 核心论文作者将在去匿名化后公布。',
     contactTeam: '联系团队',
   },
   getStarted: {

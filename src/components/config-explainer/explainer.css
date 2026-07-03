@@ -60,7 +60,7 @@
   margin: 0;
   padding: 1rem 0;
   overflow-x: auto;
-  background: #fffbeb;
+  background: var(--color-bg);
   border-bottom-left-radius: 0.875rem;
   border-bottom-right-radius: 0.875rem;
 }

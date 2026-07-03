@@ -17,7 +17,7 @@ export const en = {
     label: 'Open-source research project',
     tagline: 'Understand why your network configuration is correct.',
     description:
-      'NetSubSpec is an open-source network configuration explanation tool. It derives localized, sound constraints that explain how individual routers, configuration lines, and fields preserve verified network behavior.',
+      'SpecLens is an open-source network configuration explanation tool. It derives localized, sound constraints that explain how individual routers, configuration lines, and fields preserve verified network behavior.',
     tryDemo: 'Try the Demo',
     viewGithub: 'View on GitHub',
     paperVenue: "Based on the ACM SIGCOMM 2026 paper",
@@ -25,8 +25,8 @@ export const en = {
     pipelineLabel: 'Explanation pipeline',
   },
   why: {
-    label: 'Why NetSubSpec',
-    title: 'Network verification tells you whether a configuration is correct. NetSubSpec explains why.',
+    label: 'Why SpecLens',
+    title: 'Network verification tells you whether a configuration is correct. SpecLens explains why.',
     lead: 'After verification succeeds, operators still need to understand which configuration elements matter, what each one must preserve, and which local edits remain safe.',
     questionsTitle: 'Questions that remain after verification',
     q1: 'Which configuration elements make the property hold?',
@@ -35,7 +35,7 @@ export const en = {
     q4: 'Which lines or fields are irrelevant to this property?',
     q5: 'Are there dependencies on policies at other routers?',
     summary:
-      'NetSubSpec associates configuration locations with localized correctness constraints, allowing operators to reason about focused configuration fragments instead of manually simulating the entire network.',
+      'SpecLens associates configuration locations with localized correctness constraints, allowing operators to reason about focused configuration fragments instead of manually simulating the entire network.',
     before: 'Before',
     after: 'After',
   },
@@ -53,21 +53,21 @@ export const en = {
   },
   capabilities: {
     label: 'Capabilities',
-    title: 'What NetSubSpec Can Explain',
+    title: 'What SpecLens Can Explain',
     lead: 'Capabilities supported by the core SIGCOMM system and its current implementation — not research extensions such as repair-space characterization or fault-tolerant subspecifications.',
   },
   workflow: {
     label: 'Workflow',
-    title: 'How NetSubSpec Fits into the Network Operations Workflow',
-    lead: 'NetSubSpec complements existing network verification, synthesis, and repair systems rather than replacing them.',
-    overviewCaption: 'NetSubSpec in the network operations workflow (from the paper).',
+    title: 'How SpecLens Fits into the Network Operations Workflow',
+    lead: 'SpecLens complements existing network verification, synthesis, and repair systems rather than replacing them.',
+    overviewCaption: 'SpecLens in the network operations workflow (from the paper).',
     pipelineCaption: 'Two-phase pipeline for extracting localized subspecifications.',
     technicalTitle: 'Technical pipeline',
   },
   userStudy: {
     label: 'User study',
     title: 'Validated with network operators and graduate students',
-    lead: 'We evaluated NetSubSpec with 23 participants (15 professional network operators and 8 networking graduate students) on four configuration reasoning tasks.',
+    lead: 'We evaluated SpecLens with 23 participants (15 professional network operators and 8 networking graduate students) on four configuration reasoning tasks.',
     accuracyTitle: 'Task accuracy improves with localized subspecifications',
     accuracyLead:
       'Participants scored higher when explanations were available. Combined accuracy rose from 1.83 to 2.67 points (+52% relative improvement on the paper scale). Task 4 showed the largest gain (+78%).',
@@ -96,14 +96,14 @@ export const en = {
     extensionsTitle: 'Research extensions',
     peopleTitle: 'People & contact',
     peopleLead:
-      'NetSubSpec is developed at ShanghaiTech University. SIGCOMM core-paper authors will be listed after camera-ready de-anonymization.',
+      'SpecLens is developed at ShanghaiTech University. SIGCOMM core-paper authors will be listed after camera-ready de-anonymization.',
     contactTeam: 'Contact the team',
   },
   getStarted: {
     label: 'Get started',
   },
   trust: {
-    label: 'Why trust NetSubSpec',
+    label: 'Why trust SpecLens',
     title: 'Grounded in formal reasoning and operator evidence',
     formalTitle: 'Formally grounded',
     formalBody:

@@ -1,41 +1,40 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ConfigExplainer from '../components/config-explainer/ConfigExplainer.tsx';
+import EvalChartLegend from '../components/EvalChartLegend.astro';
 import {
   siteMeta,
   whyQuestions,
-  capabilities,
   workflowSteps,
   userStudyMetrics,
+  benchmarkMetrics,
+  trustTabs,
+  showWorkflowSection,
   contact,
 } from '../config/siteContent';
 import { projectLinks } from '../config/projectLinks';
 import { coreResearch, researchExtensions, researchTree } from '../config/extensions';
 ---
 
-<BaseLayout title="NetSubSpec" description={siteMeta.description}>
+<BaseLayout title="SpecLens" description={siteMeta.description}>
   <div class="home">
     <div class="container banner-container">
       <h1>{siteMeta.name}</h1>
       <p class="hero-lead">{siteMeta.tagline}</p>
       <p>{siteMeta.description}</p>
-      <p class="hero-paper">
-        Based on the {siteMeta.corePaper.venue} paper<br />
-        <em>{siteMeta.corePaper.title}</em>
-      </p>
       <p class="hero-links">
         <a href={projectLinks.paper}>Paper</a>
         {' · '}
-        {
-          projectLinks.github === '#' ? (
-            <span class="hero-links__pending">Code (coming soon)</span>
-          ) : (
-            <a href={projectLinks.github}>Code</a>
-          )
-        }
+        <a href={projectLinks.github} target="_blank" rel="noopener noreferrer">Code</a>
       </p>
       <p class="hero-contact">
-        Contact: <a href={`mailto:${contact.email}`}>{contact.email}</a> · {contact.affiliation}
+        <span class="hero-contact__label">Contact:</span>
+        {' '}
+        <a href={`mailto:${contact.email}`}>{contact.email}</a> · {contact.affiliation}
+      </p>
+      <p class="hero-paper">
+        Based on the {siteMeta.corePaper.venue} paper<br />
+        <em>{siteMeta.corePaper.title}</em>
       </p>
     </div>
 
@@ -43,10 +42,10 @@ import { coreResearch, researchExtensions, researchTree } from '../config/extens
 
     <div class="container">
       <section id="why" class="section">
-        <div class="section-title"><h2>Why NetSubSpec</h2></div>
+        <div class="section-title"><h2>Why {siteMeta.name}</h2></div>
         <div class="content-row">
           <p>
-            Network verification tells you whether a configuration is correct. NetSubSpec explains
+            Network verification tells you whether a configuration is correct. {siteMeta.name} explains
             why.
           </p>
         </div>
@@ -56,124 +55,106 @@ import { coreResearch, researchExtensions, researchTree } from '../config/extens
       </section>
 
       <section id="demo" class="section">
-        <div class="section-title">
-          <h2>Inspect localized explanations on real configuration</h2>
-        </div>
+        <div class="section-title"><h2>Demo</h2></div>
         <div class="content-row">
-          <p>
-            A lightweight public preview of the explanation interface on a private-prefix filtering
-            task from our operator study — switch between R1, R2, and R3 configurations. No
-            participant login or data collection.
-          </p>
+          <h4>Inspect localized explanations on example configuration</h4>
         </div>
         <ConfigExplainer client:load />
         <div class="demo-footer">
-          <a href={projectLinks.multiSubspec} target="_blank" rel="noopener noreferrer">
-            Explore Multi-Subspec Demo →
-          </a>
+          <div class="demo-links">
+            <a href={projectLinks.userStudy} target="_blank" rel="noopener noreferrer">
+              User-Study Demo →
+            </a>
+            <a href={projectLinks.multiSubspec} target="_blank" rel="noopener noreferrer">
+              Explore Multi-Subspec Demo →
+            </a>
+          </div>
           <div class="legend-inline">
-            <span><span class="legend-swatch legend-swatch--field"></span> Field subspec</span>
             <span><span class="legend-swatch legend-swatch--line"></span> Line-level</span>
+            <span><span class="legend-swatch legend-swatch--field"></span> Field subspec</span>
             <span><span class="legend-swatch legend-swatch--empty"></span> Unrestricted</span>
           </div>
         </div>
       </section>
 
-      <section id="capabilities" class="section">
-        <div class="section-title"><h2>Capabilities</h2></div>
-        {
-          capabilities.map((cap) => (
+      {
+        showWorkflowSection && (
+          <section id="workflow" class="section">
+            <div class="section-title"><h2>Workflow</h2></div>
             <div class="content-row">
-              <h4>{cap.title}</h4>
-              <p>{cap.description}</p>
+              <p>
+                {siteMeta.name} complements existing network verification, synthesis, and repair systems
+                rather than replacing them.
+              </p>
             </div>
-          ))
-        }
-      </section>
-
-      <section id="workflow" class="section">
-        <div class="section-title"><h2>Workflow</h2></div>
-        <div class="content-row">
-          <p>
-            NetSubSpec complements existing network verification, synthesis, and repair systems
-            rather than replacing them.
-          </p>
-        </div>
-        <div class="workflow-layout">
-          <div class="workflow-col">
-            <figure class="figure-box figure-box--fill">
-              <img src="/figures/fig-overview-new.png" alt="NetSubSpec workflow overview" loading="lazy" />
-              <figcaption>
-                Subspecification generation flow, using stable control-plane behavior as
-                router-level subspecification.
-              </figcaption>
-            </figure>
-            <ol class="workflow-steps-list">
-              {
-                workflowSteps.map((step, i) => (
-                  <li>
-                    <span class="step-num">{i + 1}</span>
-                    <div>
-                      <strong>{step.title}</strong>
-                      <p>{step.description}</p>
-                    </div>
-                  </li>
-                ))
-              }
-            </ol>
-          </div>
-          <figure class="figure-box figure-box--fill">
-            <img src="/figures/fig-pipeline-new.png" alt="NetSubSpec technical pipeline" loading="lazy" />
-            <figcaption>Example of field-level subspec derivation.</figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section id="demos" class="section">
-        <div class="section-title"><h2>Demos</h2></div>
-        <div class="demo-grid">
-          <div class="content-row">
-            <h4>User-Study Demo</h4>
-            <p>
-              Explore localized subspecifications on configuration reasoning tasks from our operator
-              study.
-            </p>
-            <p>
-              <a href={projectLinks.userStudy} target="_blank" rel="noopener noreferrer">Open demo →</a>
-            </p>
-          </div>
-          <div class="content-row">
-            <h4>Multi-Subspec Demo</h4>
-            <p>
-              Explore the configuration-maintenance tasks used in our user study and dependencies
-              among multiple configuration locations.
-            </p>
-            <p>
-              <a href={projectLinks.multiSubspec} target="_blank" rel="noopener noreferrer">Open demo →</a>
-            </p>
-          </div>
-        </div>
-      </section>
+            <div class="workflow-layout">
+              <div class="workflow-col">
+                <figure class="figure-box figure-box--fill">
+                  <img src="/figures/fig-overview-new.png" alt={`${siteMeta.name} workflow overview`} loading="lazy" />
+                  <figcaption>
+                    Subspecification generation flow, using stable control-plane behavior as
+                    router-level subspecification.
+                  </figcaption>
+                </figure>
+                <ol class="workflow-steps-list">
+                  {
+                    workflowSteps.map((step, i) => (
+                      <li>
+                        <span class="step-num">{i + 1}</span>
+                        <div>
+                          <strong>{step.title}</strong>
+                          <p>{step.description}</p>
+                        </div>
+                      </li>
+                    ))
+                  }
+                </ol>
+              </div>
+              <figure class="figure-box figure-box--fill">
+                <img src="/figures/fig-pipeline-new.png" alt={`${siteMeta.name} technical pipeline`} loading="lazy" />
+                <figcaption>Example of field-level subspec derivation.</figcaption>
+              </figure>
+            </div>
+          </section>
+        )
+      }
 
       <section id="trust" class="section">
         <div class="section-title">
-          <h2>Why Trust NetSubSpec</h2>
+          <h2>Why Trust {siteMeta.name}</h2>
         </div>
 
-        <div class="eval-block">
-          <h4 class="eval-subtitle eval-subtitle--first">Validated with Users</h4>
-          <p class="eval-lead">
-            We evaluated NetSubSpec with {userStudyMetrics.participants} participants ({userStudyMetrics.operators} professional network operators and {userStudyMetrics.students} graduate students) on four configuration reasoning tasks.
-          </p>
-          <div class="eval-highlights">
-            <span><strong>{userStudyMetrics.accuracyImprovement}</strong> accuracy improvement</span>
-            <span><strong>{userStudyMetrics.timeReduction}</strong> time reduction</span>
+        <ul class="trust-tabs" role="tablist">
+          {
+            trustTabs.map((tab, i) => (
+              <li>
+                <a
+                  href="#"
+                  class:list={[i === 0 && 'active']}
+                  data-trust-tab={tab.id}
+                  role="tab"
+                  aria-selected={i === 0 ? 'true' : 'false'}
+                >
+                  {tab.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+
+        <div class="trust-panel" data-trust-panel="users" role="tabpanel">
+          <div class="trust-panel__intro">
+            <p class="eval-lead">
+              We evaluated {siteMeta.name} with {userStudyMetrics.participants} participants ({userStudyMetrics.operators} professional network operators and {userStudyMetrics.students} graduate students) on four configuration reasoning tasks.
+            </p>
+            <div class="eval-highlights">
+              <span><strong>{userStudyMetrics.accuracyImprovement}</strong> accuracy improvement</span>
+              <span><strong>{userStudyMetrics.timeReduction}</strong> time reduction</span>
+            </div>
           </div>
 
           <figure class="figure-box figure-box--wide">
-            <div class="figure-legend">
-              <img src="/figures/fig-legend-userstudy.png" alt="User study figure legend" loading="lazy" />
-            </div>
+            <EvalChartLegend variant="userstudy" />
             <div class="eval-grid">
               <figure>
                 <img src="/figures/fig-userstudy-accuracy-combined.png" alt="Task accuracy (combined)" loading="lazy" />
@@ -200,7 +181,7 @@ import { coreResearch, researchExtensions, researchTree } from '../config/extens
                 <figcaption>Task completion time (operators).</figcaption>
               </figure>
             </div>
-            <p class="figure-caption">
+            <p class="figure-caption figure-caption--summary">
               User study task accuracy and completion time.
             </p>
           </figure>
@@ -216,16 +197,18 @@ import { coreResearch, researchExtensions, researchTree } from '../config/extens
               nearly 2× speedup with subspecs; operators benefited most on the hardest task.
             </p>
           </div>
+        </div>
 
-          <h4 class="eval-subtitle">System Usability Scale (SUS)</h4>
-          <p class="eval-lead">
-            Mean SUS was 62.3/100 overall (71.3 academia, 57.5 industry). 70% of participants
-            reported they would use localized subspecifications frequently.
-          </p>
+        <div class="trust-panel" data-trust-panel="sus" role="tabpanel" hidden>
+          <div class="trust-panel__intro">
+            <p class="eval-lead">
+              Mean SUS was 62.3/100 overall (71.3 academia, 57.5 industry). 70% of participants
+              reported they would use localized subspecifications frequently.
+            </p>
+            <div class="eval-highlights" aria-hidden="true"></div>
+          </div>
           <figure class="figure-box figure-box--wide">
-            <div class="figure-legend">
-              <img src="/figures/fig-legend-sus.png" alt="SUS figure legend" loading="lazy" />
-            </div>
+            <EvalChartLegend variant="sus" />
             <div class="eval-grid eval-grid--3">
               <figure>
                 <img src="/figures/fig-userstudy-sus-combined.png" alt="SUS (combined)" loading="lazy" />
@@ -241,20 +224,20 @@ import { coreResearch, researchExtensions, researchTree } from '../config/extens
               </figure>
             </div>
           </figure>
+        </div>
 
-          <h4 class="eval-subtitle">Evaluated at Scale</h4>
-          <p class="eval-lead">
-            We benchmarked subspecification generation on real and synthetic network configurations.
-          </p>
-          <div class="eval-highlights">
-            <span><strong>{userStudyMetrics.internet2Minutes} min</strong> Internet2</span>
-            <span><strong>{userStudyMetrics.fiveHundredRouterMinutes} min</strong> 500-router network</span>
+        <div class="trust-panel" data-trust-panel="scalability" role="tabpanel" hidden>
+          <div class="trust-panel__intro">
+            <p class="eval-lead">
+              We assessed scalability by varying network size, number of prefixes, and parallelism.
+            </p>
+            <div class="eval-highlights">
+              <span><strong>{benchmarkMetrics.fiveHundredRouterMinutes} min</strong> at 500 routers</span>
+            </div>
           </div>
 
           <figure class="figure-box figure-box--wide">
-            <div class="figure-legend">
-              <img src="/figures/fig_benchmark_lineplot_legend.png" alt="Scalability figure legend" loading="lazy" />
-            </div>
+            <EvalChartLegend variant="benchmark-line" />
             <div class="eval-grid eval-grid--3">
               <figure>
                 <img src="/figures/fig_benchmark_lineplot_fattrees.png" alt="Scalability varying network size" loading="lazy" />
@@ -262,42 +245,50 @@ import { coreResearch, researchExtensions, researchTree } from '../config/extens
               </figure>
               <figure>
                 <img src="/figures/fig_benchmark_lineplot_synthetic.png" alt="Scalability varying number of prefixes" loading="lazy" />
-                <figcaption>Vary #prefixes.</figcaption>
+                <figcaption>Vary prefixes.</figcaption>
               </figure>
               <figure>
                 <img src="/figures/fig_benchmark_lineplot_cores.png" alt="Scalability varying thread count" loading="lazy" />
-                <figcaption>Vary #threads (parallelism).</figcaption>
+                <figcaption>Vary threads (parallelism).</figcaption>
               </figure>
             </div>
-            <p class="figure-caption">
+            <p class="figure-caption figure-caption--summary">
               Scalability of subspecification generation under different dimensions.
             </p>
           </figure>
-
-          <figure class="figure-box figure-box--wide figure-box--runtime">
-            <div class="figure-legend">
-              <img src="/figures/fig_legend_benchmarks_time.png" alt="Benchmark runtime legend" loading="lazy" />
-            </div>
-            <div class="figure-runtime-chart">
-              <img src="/figures/fig_benchmark_times.png" alt="Run time on each network configuration" loading="lazy" />
-            </div>
-            <p class="figure-caption">Run time on each network configuration.</p>
-          </figure>
-
-          <p class="content-row" style="text-align:center;margin-top:1.5rem">
-            <a href={projectLinks.paper}>Read the full evaluation →</a>
-          </p>
         </div>
+
+        <div class="trust-panel" data-trust-panel="runtime" role="tabpanel" hidden>
+          <div class="trust-panel__intro">
+            <p class="eval-lead">
+              We benchmarked end-to-end subspecification generation on real and synthetic network configurations.
+            </p>
+            <div class="eval-highlights">
+              <span><strong>{benchmarkMetrics.internet2Minutes} min</strong> Internet2</span>
+              <span><strong>{benchmarkMetrics.syntheticSecondsRange} sec</strong> synthetic configs</span>
+            </div>
+          </div>
+
+          <figure class="figure-box figure-box--wide">
+            <EvalChartLegend variant="benchmark-time" />
+            <div class="eval-chart-single">
+              <img
+                src="/figures/fig_benchmark_times.png"
+                alt="Run time on each network configuration"
+                loading="lazy"
+              />
+            </div>
+            <p class="figure-caption figure-caption--summary">Run time on each network configuration.</p>
+          </figure>
+        </div>
+
+        <p class="content-row trust-footer">
+          <a href={projectLinks.paper}>Read the full evaluation →</a>
+        </p>
       </section>
 
       <section id="research" class="section">
         <div class="section-title"><h2>Research Extensions</h2></div>
-        <div class="content-row">
-          <p>
-            NetSubSpec is the umbrella project; the SIGCOMM paper is the core work. Subsequent work
-            extends localized subspecifications to repair spaces and failures.
-          </p>
-        </div>
         <ul class="research-tabs" role="tablist">
           {
             researchTree.map((item, i) => (
@@ -319,8 +310,16 @@ import { coreResearch, researchExtensions, researchTree } from '../config/extens
         <div class="research-panel" data-research-panel="core" role="tabpanel">
           <div class="content-row">
             <h4><a href={coreResearch.pdf}>{coreResearch.title}</a></h4>
-            <p class="research-meta">{coreResearch.venue}</p>
+            <p class="research-meta">
+              {coreResearch.venue} · {coreResearch.date} · {coreResearch.location}
+            </p>
+            <p class="research-meta">{coreResearch.authors.join(', ')}</p>
             <p>{coreResearch.description}</p>
+            <p>
+              <a href={coreResearch.pdf}>PDF</a>
+              {' · '}
+              <a href={coreResearch.doi} target="_blank" rel="noopener noreferrer">DOI</a>
+            </p>
           </div>
         </div>
 
@@ -354,25 +353,30 @@ import { coreResearch, researchExtensions, researchTree } from '../config/extens
   </div>
 
   <script>
-    document.querySelectorAll('[data-research-tab]').forEach((tab) => {
-      tab.addEventListener('click', (e) => {
-        e.preventDefault();
-        const id = tab.getAttribute('data-research-tab');
-        if (!id) return;
+    function setupSectionTabs(tabAttr, panelAttr) {
+      document.querySelectorAll(`[${tabAttr}]`).forEach((tab) => {
+        tab.addEventListener('click', (e) => {
+          e.preventDefault();
+          const id = tab.getAttribute(tabAttr);
+          if (!id) return;
 
-        document.querySelectorAll('[data-research-tab]').forEach((t) => {
-          t.classList.remove('active');
-          t.setAttribute('aria-selected', 'false');
-        });
-        tab.classList.add('active');
-        tab.setAttribute('aria-selected', 'true');
+          document.querySelectorAll(`[${tabAttr}]`).forEach((t) => {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
 
-        document.querySelectorAll('[data-research-panel]').forEach((panel) => {
-          const panelId = panel.getAttribute('data-research-panel');
-          if (panelId === id) panel.removeAttribute('hidden');
-          else panel.setAttribute('hidden', '');
+          document.querySelectorAll(`[${panelAttr}]`).forEach((panel) => {
+            const panelId = panel.getAttribute(panelAttr);
+            if (panelId === id) panel.removeAttribute('hidden');
+            else panel.setAttribute('hidden', '');
+          });
         });
       });
-    });
+    }
+
+    setupSectionTabs('data-trust-tab', 'data-trust-panel');
+    setupSectionTabs('data-research-tab', 'data-research-panel');
   </script>
 </BaseLayout>

@@ -1,0 +1,100 @@
+---
+interface Props {
+  variant: 'userstudy' | 'sus' | 'benchmark-line' | 'benchmark-time';
+}
+
+const { variant } = Astro.props;
+---
+
+<div class="eval-legend">
+  {
+    variant === 'userstudy' && (
+      <>
+        <span class="eval-legend__item">
+          <span class="eval-legend__swatch eval-legend__swatch--control" aria-hidden="true"></span>
+          without subspecs
+        </span>
+        <span class="eval-legend__item">
+          <span class="eval-legend__swatch eval-legend__swatch--experimental" aria-hidden="true"></span>
+          with subspecs
+        </span>
+        <span class="eval-legend__item">
+          <span class="eval-legend__line eval-legend__line--median" aria-hidden="true"></span>
+          median
+        </span>
+        <span class="eval-legend__item">
+          <span class="eval-legend__line eval-legend__line--mean" aria-hidden="true"></span>
+          mean value
+        </span>
+      </>
+    )
+  }
+  {
+    variant === 'sus' && (
+      <>
+        <span class="eval-legend__item">
+          <span class="eval-legend__swatch eval-legend__swatch--positive" aria-hidden="true"></span>
+          Positive
+        </span>
+        <span class="eval-legend__item">
+          <span class="eval-legend__swatch eval-legend__swatch--negative" aria-hidden="true"></span>
+          Negative
+        </span>
+        <span class="eval-legend__item">
+          <span class="eval-legend__line eval-legend__line--median" aria-hidden="true"></span>
+          median
+        </span>
+        <span class="eval-legend__item">
+          <span class="eval-legend__line eval-legend__line--mean" aria-hidden="true"></span>
+          mean value
+        </span>
+      </>
+    )
+  }
+  {
+    variant === 'benchmark-line' && (
+      <>
+        <span class="eval-legend__item">
+          <span class="eval-legend__series eval-legend__series--fullsym-line" aria-hidden="true">
+            <span class="eval-legend__marker eval-legend__marker--square"></span>
+          </span>
+          FullSym
+        </span>
+        <span class="eval-legend__item">
+          <span class="eval-legend__series eval-legend__series--subspec-ns-line" aria-hidden="true">
+            <span class="eval-legend__marker eval-legend__marker--triangle"></span>
+          </span>
+          Subspec<sub>NS</sub>
+        </span>
+        <span class="eval-legend__item">
+          <span class="eval-legend__series eval-legend__series--subspec-line" aria-hidden="true">
+            <span class="eval-legend__marker eval-legend__marker--circle"></span>
+          </span>
+          Subspec
+        </span>
+        <span class="eval-legend__item">
+          <span class="eval-legend__line eval-legend__line--timeout" aria-hidden="true"></span>
+          Timeout
+        </span>
+      </>
+    )
+  }
+  {
+    variant === 'benchmark-time' && (
+      <>
+        <span class="eval-legend__item">
+          <span class="eval-legend__swatch eval-legend__swatch--fullsym-bar" aria-hidden="true"></span>
+          FullSym
+        </span>
+        <span class="eval-legend__item">
+          <span class="eval-legend__swatch eval-legend__swatch--subspec-ns-bar" aria-hidden="true"></span>
+          Subspec<sub>NS</sub>
+        </span>
+        <span class="eval-legend__item">
+          <span class="eval-legend__swatch eval-legend__swatch--subspec-bar" aria-hidden="true"></span>
+          Subspec
+        </span>
+      </>
+    )
+  }
+</div>

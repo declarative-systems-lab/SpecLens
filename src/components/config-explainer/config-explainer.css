@@ -21,8 +21,10 @@
 
 .explainer-topology {
   padding: 0.65rem;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  border-radius: 6px;
 }
 
 .explainer-topology__image {
@@ -35,8 +37,10 @@
 .explainer-property {
   flex: 1;
   padding: 1rem 1.15rem;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  border-radius: 6px;
 }
 
 .explainer-property__label {
@@ -44,7 +48,7 @@
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #999;
+  color: var(--color-text-muted);
   margin: 0;
 }
 
@@ -53,14 +57,16 @@
   margin-top: 0.75rem;
   font-size: 0.9rem;
   line-height: 1.55;
-  color: #d3d4e4;
+  color: var(--color-text-secondary);
 }
 
 .explainer-main {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  border-radius: 6px;
   background: #fff;
   min-height: 100%;
 }
@@ -71,8 +77,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
-  border-bottom: 1px solid #e2e8f0;
-  background: #fffbeb;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg);
   padding: 0.625rem 0.85rem;
   min-height: 2.75rem;
 }
@@ -84,9 +90,9 @@
 }
 
 .explainer-router-tab {
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--color-border);
   background: #fff;
-  color: #475569;
+  color: var(--color-text-muted);
   font-family: Consolas, 'Courier New', monospace;
   font-size: 0.75rem;
   font-weight: 600;
@@ -96,24 +102,24 @@
 }
 
 .explainer-router-tab:hover {
-  border-color: #d2951d;
-  color: #92400e;
+  border-color: var(--color-accent);
+  color: var(--color-accent-hover);
 }
 
 .explainer-router-tab.is-active {
-  border-color: #d2951d;
-  background: #fef3c7;
-  color: #92400e;
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
+  color: var(--color-accent-hover);
 }
 
 .explainer-router-tab:focus-visible {
-  outline: 2px solid #d2951d;
+  outline: 2px solid var(--color-accent);
   outline-offset: 1px;
 }
 
 .explainer-toolbar__hint {
   font-size: 0.75rem;
-  color: #64748b;
+  color: var(--color-text-muted);
 }
 
 .config-container {
@@ -131,7 +137,7 @@
 }
 
 .config-container:focus-visible {
-  outline: 2px solid #d2951d;
+  outline: 2px solid var(--color-accent);
   outline-offset: -2px;
 }
 
@@ -142,7 +148,7 @@
 }
 
 .config-line-number {
-  color: #94a3b8;
+  color: var(--color-text-subtle);
   user-select: none;
 }
 
