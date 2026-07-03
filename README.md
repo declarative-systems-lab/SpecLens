@@ -28,4 +28,4 @@ npm run build
 
 Output is in `dist/`.
 
-The user-study app is at https://declarative-systems-lab.github.io/UserstudyWeb/ — link only.
+The user-study app is bundled at `/SpecLens/userstudy/` during deployment from [UserstudyWeb](https://github.com/declarative-systems-lab/UserstudyWeb).
