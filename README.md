@@ -1,4 +1,4 @@
-```md
+
 # SpecLens Website
 
 Project website for **SpecLens**.
@@ -8,4 +8,4 @@ Project website for **SpecLens**.
 Visit the SpecLens website directly:
 
 https://declarative-systems-lab.github.io/SpecLens/
-```
+
