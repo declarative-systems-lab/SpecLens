@@ -1,5 +1,6 @@
 ---
 import { siteMeta } from '../../../config/siteContent';
+import { assetUrl } from '../../../utils/assetUrl';
 ---
 
 <div class="panel-inner">
@@ -23,7 +24,7 @@ import { siteMeta } from '../../../config/siteContent';
       </p>
     </div>
     <figure class="surface-card overflow-hidden p-3">
-      <img src="/figures/ui.png" alt="SpecLens explanation interface" class="w-full rounded-md" loading="eager" />
+      <img src={assetUrl('/figures/ui.png')} alt="SpecLens explanation interface" class="w-full rounded-md" loading="eager" />
     </figure>
   </div>
 </div>

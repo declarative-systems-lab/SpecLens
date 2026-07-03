@@ -1,5 +1,6 @@
 ---
 import { workflowSteps } from '../../config/siteContent';
+import { assetUrl } from '../../utils/assetUrl';
 ---
 
 <section id="workflow" class="border-b border-ink-200/70 bg-ink-50/50">
@@ -14,7 +15,7 @@ import { workflowSteps } from '../../config/siteContent';
 
     <figure class="mt-10 surface-card overflow-hidden p-4 sm:p-6">
       <img
-        src="/figures/fig-overview-new.png"
+        src={assetUrl('/figures/fig-overview-new.png')}
         alt="SpecLens workflow overview"
         class="w-full"
         loading="lazy"
@@ -31,7 +32,7 @@ import { workflowSteps } from '../../config/siteContent';
 
       <figure class="mt-6 surface-card overflow-hidden p-4 sm:p-6">
         <img
-          src="/figures/fig-pipeline-new.png"
+          src={assetUrl('/figures/fig-pipeline-new.png')}
           alt="SpecLens two-phase technical pipeline"
           class="w-full"
           loading="lazy"

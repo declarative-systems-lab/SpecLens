@@ -1,7 +1,8 @@
 import type { MultiRouterExample } from './types';
+import { assetUrl } from '../../utils/assetUrl';
 
 export const question3Example: MultiRouterExample = {
-  topologyImage: '/figures/question3-topology.png',
+  topologyImage: assetUrl('/figures/question3-topology.png'),
   specificationHtml: `<span><b>Customer Reachability:</b> The Customer must be able to reach ISP1-advertised prefix 198.51.100.0/24.</span>`,
   specificationPlain: `Customer Reachability: The Customer must be able to reach ISP1-advertised prefix 198.51.100.0/24.`,
   fieldSubspecs: `Field-Level Subspecs (Normalized)

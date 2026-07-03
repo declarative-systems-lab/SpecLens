@@ -1,3 +1,7 @@
+---
+import { assetUrl } from '../../../utils/assetUrl';
+---
+
 <div class="panel-inner">
   <p class="section-label" data-i18n="workflow.label">Workflow</p>
   <h2 class="section-title text-xl sm:text-2xl" data-i18n="workflow.title">
@@ -6,13 +10,13 @@
 
   <div class="mt-5 grid gap-4 lg:grid-cols-2">
     <figure class="surface-card overflow-hidden p-3">
-      <img src="/figures/fig-overview-new.png" alt="Workflow overview" class="max-h-[38vh] w-full object-contain" loading="lazy" />
+      <img src={assetUrl('/figures/fig-overview-new.png')} alt="Workflow overview" class="max-h-[38vh] w-full object-contain" loading="lazy" />
       <figcaption class="mt-2 text-center text-[0.65rem] text-ink-500" data-i18n="workflow.overviewCaption">
         SpecLens in the network operations workflow (from the paper).
       </figcaption>
     </figure>
     <figure class="surface-card overflow-hidden p-3">
-      <img src="/figures/fig-pipeline-new.png" alt="Technical pipeline" class="max-h-[38vh] w-full object-contain" loading="lazy" />
+      <img src={assetUrl('/figures/fig-pipeline-new.png')} alt="Technical pipeline" class="max-h-[38vh] w-full object-contain" loading="lazy" />
       <figcaption class="mt-2 text-center text-[0.65rem] text-ink-500" data-i18n="workflow.pipelineCaption">
         Two-phase pipeline for extracting localized subspecifications.
       </figcaption>

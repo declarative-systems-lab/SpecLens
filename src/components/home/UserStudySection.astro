@@ -1,6 +1,7 @@
 ---
 import { projectLinks } from '../../config/projectLinks';
 import { userStudyMetrics } from '../../config/siteContent';
+import { assetUrl } from '../../utils/assetUrl';
 ---
 
 <section id="user-study" class="border-b border-ink-200/70 bg-white">
@@ -47,20 +48,20 @@ import { userStudyMetrics } from '../../config/siteContent';
         </p>
         <figure class="mt-6 surface-card overflow-hidden p-4">
           <img
-            src="/figures/fig-userstudy-accuracy-combined.png"
+            src={assetUrl('/figures/fig-userstudy-accuracy-combined.png')}
             alt="User study accuracy with and without subspecifications"
             class="w-full"
             loading="lazy"
           />
           <div class="mt-4 grid gap-4 sm:grid-cols-2">
             <img
-              src="/figures/fig-userstudy-accuracy-academia.png"
+              src={assetUrl('/figures/fig-userstudy-accuracy-academia.png')}
               alt="Accuracy — graduate students"
               class="w-full rounded border border-ink-100"
               loading="lazy"
             />
             <img
-              src="/figures/fig-userstudy-accuracy-industry.png"
+              src={assetUrl('/figures/fig-userstudy-accuracy-industry.png')}
               alt="Accuracy — network operators"
               class="w-full rounded border border-ink-100"
               loading="lazy"
@@ -78,20 +79,20 @@ import { userStudyMetrics } from '../../config/siteContent';
         </p>
         <figure class="mt-6 surface-card overflow-hidden p-4">
           <img
-            src="/figures/fig-userstudy-time-combined.png"
+            src={assetUrl('/figures/fig-userstudy-time-combined.png')}
             alt="User study completion time with and without subspecifications"
             class="w-full"
             loading="lazy"
           />
           <div class="mt-4 grid gap-4 sm:grid-cols-2">
             <img
-              src="/figures/fig-userstudy-time-academia.png"
+              src={assetUrl('/figures/fig-userstudy-time-academia.png')}
               alt="Completion time — graduate students"
               class="w-full rounded border border-ink-100"
               loading="lazy"
             />
             <img
-              src="/figures/fig-userstudy-time-industry.png"
+              src={assetUrl('/figures/fig-userstudy-time-industry.png')}
               alt="Completion time — network operators"
               class="w-full rounded border border-ink-100"
               loading="lazy"
@@ -110,26 +111,26 @@ import { userStudyMetrics } from '../../config/siteContent';
       </p>
       <figure class="mt-6 surface-card overflow-hidden p-4">
         <img
-          src="/figures/fig-legend-userstudy.png"
+          src={assetUrl('/figures/fig-legend-userstudy.png')}
           alt="User study figure legend"
           class="mb-4 max-h-12 w-auto"
           loading="lazy"
         />
         <div class="grid gap-4 lg:grid-cols-3">
           <img
-            src="/figures/fig-userstudy-sus-combined.png"
+            src={assetUrl('/figures/fig-userstudy-sus-combined.png')}
             alt="SUS scores — all participants"
             class="w-full"
             loading="lazy"
           />
           <img
-            src="/figures/fig-userstudy-sus-academia.png"
+            src={assetUrl('/figures/fig-userstudy-sus-academia.png')}
             alt="SUS scores — graduate students"
             class="w-full"
             loading="lazy"
           />
           <img
-            src="/figures/fig-userstudy-sus-industry.png"
+            src={assetUrl('/figures/fig-userstudy-sus-industry.png')}
             alt="SUS scores — network operators"
             class="w-full"
             loading="lazy"

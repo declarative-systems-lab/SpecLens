@@ -1,7 +1,8 @@
 import type { MultiRouterExample } from './types';
+import { assetUrl } from '../../utils/assetUrl';
 
 export const question2Example: MultiRouterExample = {
-  topologyImage: '/figures/question2-topology.png',
+  topologyImage: assetUrl('/figures/question2-topology.png'),
   specificationHtml: `<span><b>Private Prefix Filtering:</b> The router R3 must <span style="color: red; font-weight: bold;">not reach</span> Customer-advertised private prefixes 192.168.128.0/24 and 192.168.129.0/24.</span>`,
   specificationPlain: `Private Prefix Filtering: The router R3 must not reach Customer-advertised private prefixes 192.168.128.0/24 and 192.168.129.0/24.`,
   fieldSubspecs: `Field-Level Subspecs (Normalized)

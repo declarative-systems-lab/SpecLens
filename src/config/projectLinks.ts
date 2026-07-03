@@ -1,7 +1,9 @@
+import { assetUrl } from '../utils/assetUrl';
+
 export const projectLinks = {
-  paper: '/paper/explainable-network-verification.pdf',
-  paperRepair: '/paper/repair-spaces-apnet26.pdf',
-  paperFault: '/paper/fault-tolerant-subspecifications-fmano26.pdf',
+  paper: assetUrl('/paper/explainable-network-verification.pdf'),
+  paperRepair: assetUrl('/paper/repair-spaces-apnet26.pdf'),
+  paperFault: assetUrl('/paper/fault-tolerant-subspecifications-fmano26.pdf'),
   github: 'https://github.com/yongzheng2024/batfish',
   userStudy: 'https://netsubspec.netlify.app',
   // TODO: Replace with dedicated Multi-Subspec demo URL when available.

@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ConfigExplainer from '../components/config-explainer/ConfigExplainer.tsx';
 import EvalChartLegend from '../components/EvalChartLegend.astro';
+import { assetUrl } from '../utils/assetUrl';
 import {
   siteMeta,
   whyQuestions,
@@ -90,7 +91,7 @@ import { coreResearch, researchExtensions, researchTree } from '../config/extens
             <div class="workflow-layout">
               <div class="workflow-col">
                 <figure class="figure-box figure-box--fill">
-                  <img src="/figures/fig-overview-new.png" alt={`${siteMeta.name} workflow overview`} loading="lazy" />
+                  <img src={assetUrl('/figures/fig-overview-new.png')} alt={`${siteMeta.name} workflow overview`} loading="lazy" />
                   <figcaption>
                     Subspecification generation flow, using stable control-plane behavior as
                     router-level subspecification.
@@ -111,7 +112,7 @@ import { coreResearch, researchExtensions, researchTree } from '../config/extens
                 </ol>
               </div>
               <figure class="figure-box figure-box--fill">
-                <img src="/figures/fig-pipeline-new.png" alt={`${siteMeta.name} technical pipeline`} loading="lazy" />
+                <img src={assetUrl('/figures/fig-pipeline-new.png')} alt={`${siteMeta.name} technical pipeline`} loading="lazy" />
                 <figcaption>Example of field-level subspec derivation.</figcaption>
               </figure>
             </div>
@@ -157,27 +158,27 @@ import { coreResearch, researchExtensions, researchTree } from '../config/extens
             <EvalChartLegend variant="userstudy" />
             <div class="eval-grid">
               <figure>
-                <img src="/figures/fig-userstudy-accuracy-combined.png" alt="Task accuracy (combined)" loading="lazy" />
+                <img src={assetUrl('/figures/fig-userstudy-accuracy-combined.png')} alt="Task accuracy (combined)" loading="lazy" />
                 <figcaption>Task accuracy (combined).</figcaption>
               </figure>
               <figure>
-                <img src="/figures/fig-userstudy-accuracy-academia.png" alt="Task accuracy (grad students)" loading="lazy" />
+                <img src={assetUrl('/figures/fig-userstudy-accuracy-academia.png')} alt="Task accuracy (grad students)" loading="lazy" />
                 <figcaption>Task accuracy (grad students).</figcaption>
               </figure>
               <figure>
-                <img src="/figures/fig-userstudy-accuracy-industry.png" alt="Task accuracy (operators)" loading="lazy" />
+                <img src={assetUrl('/figures/fig-userstudy-accuracy-industry.png')} alt="Task accuracy (operators)" loading="lazy" />
                 <figcaption>Task accuracy (operators).</figcaption>
               </figure>
               <figure>
-                <img src="/figures/fig-userstudy-time-combined.png" alt="Task completion time (combined)" loading="lazy" />
+                <img src={assetUrl('/figures/fig-userstudy-time-combined.png')} alt="Task completion time (combined)" loading="lazy" />
                 <figcaption>Task completion time (combined).</figcaption>
               </figure>
               <figure>
-                <img src="/figures/fig-userstudy-time-academia.png" alt="Task completion time (grad students)" loading="lazy" />
+                <img src={assetUrl('/figures/fig-userstudy-time-academia.png')} alt="Task completion time (grad students)" loading="lazy" />
                 <figcaption>Task completion time (grad students).</figcaption>
               </figure>
               <figure>
-                <img src="/figures/fig-userstudy-time-industry.png" alt="Task completion time (operators)" loading="lazy" />
+                <img src={assetUrl('/figures/fig-userstudy-time-industry.png')} alt="Task completion time (operators)" loading="lazy" />
                 <figcaption>Task completion time (operators).</figcaption>
               </figure>
             </div>
@@ -211,15 +212,15 @@ import { coreResearch, researchExtensions, researchTree } from '../config/extens
             <EvalChartLegend variant="sus" />
             <div class="eval-grid eval-grid--3">
               <figure>
-                <img src="/figures/fig-userstudy-sus-combined.png" alt="SUS (combined)" loading="lazy" />
+                <img src={assetUrl('/figures/fig-userstudy-sus-combined.png')} alt="SUS (combined)" loading="lazy" />
                 <figcaption>System usability scale (combined).</figcaption>
               </figure>
               <figure>
-                <img src="/figures/fig-userstudy-sus-academia.png" alt="SUS (grad students)" loading="lazy" />
+                <img src={assetUrl('/figures/fig-userstudy-sus-academia.png')} alt="SUS (grad students)" loading="lazy" />
                 <figcaption>System usability scale (grad students).</figcaption>
               </figure>
               <figure>
-                <img src="/figures/fig-userstudy-sus-industry.png" alt="SUS (operators)" loading="lazy" />
+                <img src={assetUrl('/figures/fig-userstudy-sus-industry.png')} alt="SUS (operators)" loading="lazy" />
                 <figcaption>System usability scale (operators).</figcaption>
               </figure>
             </div>
@@ -240,15 +241,15 @@ import { coreResearch, researchExtensions, researchTree } from '../config/extens
             <EvalChartLegend variant="benchmark-line" />
             <div class="eval-grid eval-grid--3">
               <figure>
-                <img src="/figures/fig_benchmark_lineplot_fattrees.png" alt="Scalability varying network size" loading="lazy" />
+                <img src={assetUrl('/figures/fig_benchmark_lineplot_fattrees.png')} alt="Scalability varying network size" loading="lazy" />
                 <figcaption>Vary network size.</figcaption>
               </figure>
               <figure>
-                <img src="/figures/fig_benchmark_lineplot_synthetic.png" alt="Scalability varying number of prefixes" loading="lazy" />
+                <img src={assetUrl('/figures/fig_benchmark_lineplot_synthetic.png')} alt="Scalability varying number of prefixes" loading="lazy" />
                 <figcaption>Vary prefixes.</figcaption>
               </figure>
               <figure>
-                <img src="/figures/fig_benchmark_lineplot_cores.png" alt="Scalability varying thread count" loading="lazy" />
+                <img src={assetUrl('/figures/fig_benchmark_lineplot_cores.png')} alt="Scalability varying thread count" loading="lazy" />
                 <figcaption>Vary threads (parallelism).</figcaption>
               </figure>
             </div>
@@ -273,7 +274,7 @@ import { coreResearch, researchExtensions, researchTree } from '../config/extens
             <EvalChartLegend variant="benchmark-time" />
             <div class="eval-chart-single">
               <img
-                src="/figures/fig_benchmark_times.png"
+                src={assetUrl('/figures/fig_benchmark_times.png')}
                 alt="Run time on each network configuration"
                 loading="lazy"
               />
