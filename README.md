@@ -5,5 +5,7 @@ Project website for **SpecLens**.
 
 ## Website
 
-[Visit the SpecLens Website](https://declarative-systems-lab.github.io/SpecLens/)
+Visit the SpecLens website directly:
+
+https://declarative-systems-lab.github.io/SpecLens/
 ```
