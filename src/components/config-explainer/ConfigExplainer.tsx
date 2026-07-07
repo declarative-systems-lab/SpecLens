@@ -2,11 +2,14 @@ import { useMemo, useRef, useState } from 'react';
 import { question3Example } from './question3Data';
 import { useSubspecTooltip } from './useSubspecTooltip';
 import { buildSubspecMaps, parseConfigWithSubspecs } from './userstudyRender';
+import { useLocale } from '../i18n/LanguageSwitcher';
+import { getMessage } from '../../i18n';
 import './config-explainer.css';
 
 export default function ConfigExplainer() {
   const [activeIndex, setActiveIndex] = useState(0);
   const configRef = useRef<HTMLDivElement>(null);
+  const locale = useLocale();
   useSubspecTooltip(configRef);
 
   const subspecMaps = useMemo(
@@ -23,15 +26,18 @@ export default function ConfigExplainer() {
   const activeRouter = question3Example.routers[activeIndex];
 
   const configLines = useMemo(
-    () => parseConfigWithSubspecs(activeRouter.configContent, subspecMaps, 'en'),
-    [activeRouter.configContent, subspecMaps],
+    () => parseConfigWithSubspecs(activeRouter.configContent, subspecMaps, locale),
+    [activeRouter.configContent, subspecMaps, locale],
   );
+
+  const propertyLabel = getMessage(locale, 'demo.propertyLabel');
+  const toolbarHint = getMessage(locale, 'demo.hint');
 
   return (
     <div className="explainer-grid">
       <div className="explainer-sidebar">
         <div className="explainer-property">
-          <p className="explainer-property__label">Network-wide property</p>
+          <p className="explainer-property__label">{propertyLabel}</p>
           <div
             className="explainer-property__text specification-content"
             dangerouslySetInnerHTML={{ __html: question3Example.specificationHtml }}
@@ -63,10 +69,7 @@ export default function ConfigExplainer() {
               </button>
             ))}
           </div>
-          <span className="explainer-toolbar__hint">
-            Hover a highlighted field to inspect its localized subspecification. Click to copy the
-            explanation.
-          </span>
+          <span className="explainer-toolbar__hint">{toolbarHint}</span>
         </div>
 
         <div

@@ -13,11 +13,11 @@ export const siteMeta = {
 } as const;
 
 export const navItems = [
-  { label: 'Why SpecLens', href: assetUrl('/#why') },
-  { label: 'Demo', href: assetUrl('/#demo') },
-  { label: 'Why Trust', href: assetUrl('/#trust') },
-  { label: 'Research', href: assetUrl('/#research') },
-  { label: 'GitHub', href: projectLinks.github },
+  { i18nKey: 'nav.whySpecLens', fallbackLabel: 'Why SpecLens', href: assetUrl('/#why') },
+  { i18nKey: 'nav.demo', fallbackLabel: 'Demo', href: assetUrl('/#demo') },
+  { i18nKey: 'nav.whyTrust', fallbackLabel: 'Why Trust', href: assetUrl('/#trust') },
+  { i18nKey: 'nav.research', fallbackLabel: 'Research', href: assetUrl('/#research') },
+  { i18nKey: 'nav.github', fallbackLabel: 'GitHub', href: projectLinks.github },
 ] as const;
 
 /** Set to true to show the Workflow section on the homepage. */

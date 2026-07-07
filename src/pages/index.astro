@@ -5,37 +5,35 @@ import EvalChartLegend from '../components/EvalChartLegend.astro';
 import { assetUrl } from '../utils/assetUrl';
 import {
   siteMeta,
-  whyQuestions,
   workflowSteps,
   userStudyMetrics,
   benchmarkMetrics,
-  trustTabs,
   showWorkflowSection,
   contact,
 } from '../config/siteContent';
 import { projectLinks } from '../config/projectLinks';
-import { coreResearch, researchExtensions, researchTree } from '../config/extensions';
+import { coreResearch, researchExtensions } from '../config/extensions';
 ---
 
 <BaseLayout title="SpecLens" description={siteMeta.description}>
   <div class="home">
     <div class="container banner-container">
       <h1>{siteMeta.name}</h1>
-      <p class="hero-lead">{siteMeta.tagline}</p>
-      <p>{siteMeta.description}</p>
+      <p class="hero-lead" data-i18n="hero.tagline">{siteMeta.tagline}</p>
+      <p data-i18n="hero.description">{siteMeta.description}</p>
       <p class="hero-links">
-        <a href={projectLinks.paper}>Paper</a>
+        <a href={projectLinks.paper} data-i18n="hero.paperLink">Paper</a>
         {' · '}
-        <a href={projectLinks.github} target="_blank" rel="noopener noreferrer">Code</a>
+        <a href={projectLinks.github} target="_blank" rel="noopener noreferrer" data-i18n="hero.codeLink">Code</a>
       </p>
       <p class="hero-contact">
-        <span class="hero-contact__label">Contact:</span>
+        <span class="hero-contact__label" data-i18n="hero.contactLabel">Contact:</span>
         {' '}
-        <a href={`mailto:${contact.email}`}>{contact.email}</a> · {contact.affiliation}
+        <a href={`mailto:${contact.email}`}>{contact.email}</a> · <span data-i18n="home.affiliation">{contact.affiliation}</span>
       </p>
       <p class="hero-paper">
-        Based on the {siteMeta.corePaper.venue} paper<br />
-        <em>{siteMeta.corePaper.title}</em>
+        <span data-i18n="hero.paperVenue">Based on the {siteMeta.corePaper.venue} paper</span><br />
+        <em data-i18n="hero.paperTitle">{siteMeta.corePaper.title}</em>
       </p>
     </div>
 
@@ -43,37 +41,40 @@ import { coreResearch, researchExtensions, researchTree } from '../config/extens
 
     <div class="container">
       <section id="why" class="section">
-        <div class="section-title"><h2>Why {siteMeta.name}</h2></div>
+        <div class="section-title"><h2 data-i18n="home.whyHeading">Why {siteMeta.name}</h2></div>
         <div class="content-row">
-          <p>
+          <p data-i18n="home.whyLead">
             Network verification tells you whether a configuration is correct. {siteMeta.name} explains
             why.
           </p>
         </div>
         <ul class="content-list">
-          {whyQuestions.map((q) => <li>{q}</li>)}
+          <li data-i18n="home.whyQ1">Which configuration elements matter?</li>
+          <li data-i18n="home.whyQ2">What must each element preserve?</li>
+          <li data-i18n="home.whyQ3">Which local edits are safe?</li>
+          <li data-i18n="home.whyQ4">Which fields are irrelevant?</li>
         </ul>
       </section>
 
       <section id="demo" class="section">
-        <div class="section-title"><h2>Demo</h2></div>
+        <div class="section-title"><h2 data-i18n="home.demoHeading">Demo</h2></div>
         <div class="content-row">
-          <h4>Inspect localized explanations on example configuration</h4>
+          <h4 data-i18n="home.demoSubtitle">Inspect localized explanations on example configuration</h4>
         </div>
         <ConfigExplainer client:load />
         <div class="demo-footer">
           <div class="demo-links">
-            <a href={projectLinks.userStudy} target="_blank" rel="noopener noreferrer">
+            <a href={projectLinks.userStudy} target="_blank" rel="noopener noreferrer" data-i18n="home.userStudyDemo">
               User-Study Demo →
             </a>
-            <a href={projectLinks.multiSubspec} target="_blank" rel="noopener noreferrer">
+            <a href={projectLinks.multiSubspec} target="_blank" rel="noopener noreferrer" data-i18n="home.multiSubspecDemo">
               Explore Multi-Subspec Demo →
             </a>
           </div>
           <div class="legend-inline">
-            <span><span class="legend-swatch legend-swatch--line"></span> Line-level</span>
-            <span><span class="legend-swatch legend-swatch--field"></span> Field subspec</span>
-            <span><span class="legend-swatch legend-swatch--empty"></span> Unrestricted</span>
+            <span><span class="legend-swatch legend-swatch--line"></span> <span data-i18n="demo.legendLine">Line-level</span></span>
+            <span><span class="legend-swatch legend-swatch--field"></span> <span data-i18n="demo.legendField">Field subspec</span></span>
+            <span><span class="legend-swatch legend-swatch--empty"></span> <span data-i18n="demo.legendEmpty">Unrestricted</span></span>
           </div>
         </div>
       </section>
@@ -122,35 +123,40 @@ import { coreResearch, researchExtensions, researchTree } from '../config/extens
 
       <section id="trust" class="section">
         <div class="section-title">
-          <h2>Why Trust {siteMeta.name}</h2>
+          <h2 data-i18n="home.trustHeading">Why Trust {siteMeta.name}</h2>
         </div>
 
         <ul class="trust-tabs" role="tablist">
-          {
-            trustTabs.map((tab, i) => (
-              <li>
-                <a
-                  href="#"
-                  class:list={[i === 0 && 'active']}
-                  data-trust-tab={tab.id}
-                  role="tab"
-                  aria-selected={i === 0 ? 'true' : 'false'}
-                >
-                  {tab.label}
-                </a>
-              </li>
-            ))
-          }
+          <li>
+            <a href="#" class="active" data-trust-tab="users" role="tab" aria-selected="true" data-i18n="home.trustTabUsers">
+              Validated with Users
+            </a>
+          </li>
+          <li>
+            <a href="#" data-trust-tab="sus" role="tab" aria-selected="false" data-i18n="home.trustTabSus">
+              System Usability Scale (SUS)
+            </a>
+          </li>
+          <li>
+            <a href="#" data-trust-tab="scalability" role="tab" aria-selected="false" data-i18n="home.trustTabScalability">
+              Scalability
+            </a>
+          </li>
+          <li>
+            <a href="#" data-trust-tab="runtime" role="tab" aria-selected="false" data-i18n="home.trustTabRuntime">
+              Runtime
+            </a>
+          </li>
         </ul>
 
         <div class="trust-panel" data-trust-panel="users" role="tabpanel">
           <div class="trust-panel__intro">
-            <p class="eval-lead">
+            <p class="eval-lead" data-i18n="home.trustUsersLead">
               We evaluated {siteMeta.name} with {userStudyMetrics.participants} participants ({userStudyMetrics.operators} professional network operators and {userStudyMetrics.students} graduate students) on four configuration reasoning tasks.
             </p>
             <div class="eval-highlights">
-              <span><strong>{userStudyMetrics.accuracyImprovement}</strong> accuracy improvement</span>
-              <span><strong>{userStudyMetrics.timeReduction}</strong> time reduction</span>
+              <span data-i18n="home.trustAccuracyHighlight" data-i18n-html="true"><strong>{userStudyMetrics.accuracyImprovement}</strong> accuracy improvement</span>
+              <span data-i18n="home.trustTimeHighlight" data-i18n-html="true"><strong>{userStudyMetrics.timeReduction}</strong> time reduction</span>
             </div>
           </div>
 
@@ -159,41 +165,41 @@ import { coreResearch, researchExtensions, researchTree } from '../config/extens
             <div class="eval-grid">
               <figure>
                 <img src={assetUrl('/figures/fig-userstudy-accuracy-combined.png')} alt="Task accuracy (combined)" loading="lazy" />
-                <figcaption>Task accuracy (combined).</figcaption>
+                <figcaption data-i18n="home.chartAccuracyCombined">Task accuracy (combined).</figcaption>
               </figure>
               <figure>
                 <img src={assetUrl('/figures/fig-userstudy-accuracy-academia.png')} alt="Task accuracy (grad students)" loading="lazy" />
-                <figcaption>Task accuracy (grad students).</figcaption>
+                <figcaption data-i18n="home.chartAccuracyAcademia">Task accuracy (grad students).</figcaption>
               </figure>
               <figure>
                 <img src={assetUrl('/figures/fig-userstudy-accuracy-industry.png')} alt="Task accuracy (operators)" loading="lazy" />
-                <figcaption>Task accuracy (operators).</figcaption>
+                <figcaption data-i18n="home.chartAccuracyIndustry">Task accuracy (operators).</figcaption>
               </figure>
               <figure>
                 <img src={assetUrl('/figures/fig-userstudy-time-combined.png')} alt="Task completion time (combined)" loading="lazy" />
-                <figcaption>Task completion time (combined).</figcaption>
+                <figcaption data-i18n="home.chartTimeCombined">Task completion time (combined).</figcaption>
               </figure>
               <figure>
                 <img src={assetUrl('/figures/fig-userstudy-time-academia.png')} alt="Task completion time (grad students)" loading="lazy" />
-                <figcaption>Task completion time (grad students).</figcaption>
+                <figcaption data-i18n="home.chartTimeAcademia">Task completion time (grad students).</figcaption>
               </figure>
               <figure>
                 <img src={assetUrl('/figures/fig-userstudy-time-industry.png')} alt="Task completion time (operators)" loading="lazy" />
-                <figcaption>Task completion time (operators).</figcaption>
+                <figcaption data-i18n="home.chartTimeIndustry">Task completion time (operators).</figcaption>
               </figure>
             </div>
-            <p class="figure-caption figure-caption--summary">
+            <p class="figure-caption figure-caption--summary" data-i18n="home.trustUsersSummary">
               User study task accuracy and completion time.
             </p>
           </figure>
 
           <div class="content-row eval-copy">
-            <p>
+            <p data-i18n="home.trustUsersCopy1">
               Participants scored higher when explanations were available. Combined accuracy rose from
               1.83 to 2.67 points (+52% relative improvement on the paper scale). Task 4 showed the
               largest gain (+78%).
             </p>
-            <p>
+            <p data-i18n="home.trustUsersCopy2">
               Overall median completion time dropped by 24% (9.5 → 7.1 minutes). Graduate students saw
               nearly 2× speedup with subspecs; operators benefited most on the hardest task.
             </p>
@@ -202,7 +208,7 @@ import { coreResearch, researchExtensions, researchTree } from '../config/extens
 
         <div class="trust-panel" data-trust-panel="sus" role="tabpanel" hidden>
           <div class="trust-panel__intro">
-            <p class="eval-lead">
+            <p class="eval-lead" data-i18n="home.trustSusLead">
               Mean SUS was 62.3/100 overall (71.3 academia, 57.5 industry). 70% of participants
               reported they would use localized subspecifications frequently.
             </p>
@@ -213,15 +219,15 @@ import { coreResearch, researchExtensions, researchTree } from '../config/extens
             <div class="eval-grid eval-grid--3">
               <figure>
                 <img src={assetUrl('/figures/fig-userstudy-sus-combined.png')} alt="SUS (combined)" loading="lazy" />
-                <figcaption>System usability scale (combined).</figcaption>
+                <figcaption data-i18n="home.chartSusCombined">System usability scale (combined).</figcaption>
               </figure>
               <figure>
                 <img src={assetUrl('/figures/fig-userstudy-sus-academia.png')} alt="SUS (grad students)" loading="lazy" />
-                <figcaption>System usability scale (grad students).</figcaption>
+                <figcaption data-i18n="home.chartSusAcademia">System usability scale (grad students).</figcaption>
               </figure>
               <figure>
                 <img src={assetUrl('/figures/fig-userstudy-sus-industry.png')} alt="SUS (operators)" loading="lazy" />
-                <figcaption>System usability scale (operators).</figcaption>
+                <figcaption data-i18n="home.chartSusIndustry">System usability scale (operators).</figcaption>
               </figure>
             </div>
           </figure>
@@ -229,11 +235,11 @@ import { coreResearch, researchExtensions, researchTree } from '../config/extens
 
         <div class="trust-panel" data-trust-panel="scalability" role="tabpanel" hidden>
           <div class="trust-panel__intro">
-            <p class="eval-lead">
+            <p class="eval-lead" data-i18n="home.trustScalabilityLead">
               We assessed scalability by varying network size, number of prefixes, and parallelism.
             </p>
             <div class="eval-highlights">
-              <span><strong>{benchmarkMetrics.fiveHundredRouterMinutes} min</strong> at 500 routers</span>
+              <span data-i18n="home.trustScalabilityHighlight" data-i18n-html="true"><strong>{benchmarkMetrics.fiveHundredRouterMinutes} min</strong> at 500 routers</span>
             </div>
           </div>
 
@@ -242,18 +248,18 @@ import { coreResearch, researchExtensions, researchTree } from '../config/extens
             <div class="eval-grid eval-grid--3">
               <figure>
                 <img src={assetUrl('/figures/fig_benchmark_lineplot_fattrees.png')} alt="Scalability varying network size" loading="lazy" />
-                <figcaption>Vary network size.</figcaption>
+                <figcaption data-i18n="home.chartScaleNetwork">Vary network size.</figcaption>
               </figure>
               <figure>
                 <img src={assetUrl('/figures/fig_benchmark_lineplot_synthetic.png')} alt="Scalability varying number of prefixes" loading="lazy" />
-                <figcaption>Vary prefixes.</figcaption>
+                <figcaption data-i18n="home.chartScalePrefixes">Vary prefixes.</figcaption>
               </figure>
               <figure>
                 <img src={assetUrl('/figures/fig_benchmark_lineplot_cores.png')} alt="Scalability varying thread count" loading="lazy" />
-                <figcaption>Vary threads (parallelism).</figcaption>
+                <figcaption data-i18n="home.chartScaleThreads">Vary threads (parallelism).</figcaption>
               </figure>
             </div>
-            <p class="figure-caption figure-caption--summary">
+            <p class="figure-caption figure-caption--summary" data-i18n="home.trustScalabilitySummary">
               Scalability of subspecification generation under different dimensions.
             </p>
           </figure>
@@ -261,12 +267,12 @@ import { coreResearch, researchExtensions, researchTree } from '../config/extens
 
         <div class="trust-panel" data-trust-panel="runtime" role="tabpanel" hidden>
           <div class="trust-panel__intro">
-            <p class="eval-lead">
+            <p class="eval-lead" data-i18n="home.trustRuntimeLead">
               We benchmarked end-to-end subspecification generation on real and synthetic network configurations.
             </p>
             <div class="eval-highlights">
-              <span><strong>{benchmarkMetrics.internet2Minutes} min</strong> Internet2</span>
-              <span><strong>{benchmarkMetrics.syntheticSecondsRange} sec</strong> synthetic configs</span>
+              <span data-i18n="home.trustRuntimeInternet2" data-i18n-html="true"><strong>{benchmarkMetrics.internet2Minutes} min</strong> Internet2</span>
+              <span data-i18n="home.trustRuntimeSynthetic" data-i18n-html="true"><strong>{benchmarkMetrics.syntheticSecondsRange} sec</strong> synthetic configs</span>
             </div>
           </div>
 
@@ -279,33 +285,33 @@ import { coreResearch, researchExtensions, researchTree } from '../config/extens
                 loading="lazy"
               />
             </div>
-            <p class="figure-caption figure-caption--summary">Run time on each network configuration.</p>
+            <p class="figure-caption figure-caption--summary" data-i18n="home.trustRuntimeSummary">Run time on each network configuration.</p>
           </figure>
         </div>
 
         <p class="content-row trust-footer">
-          <a href={projectLinks.paper}>Read the full evaluation →</a>
+          <a href={projectLinks.paper} data-i18n="home.readFullEval">Read the full evaluation →</a>
         </p>
       </section>
 
       <section id="research" class="section">
-        <div class="section-title"><h2>Research Extensions</h2></div>
+        <div class="section-title"><h2 data-i18n="home.researchHeading">Research Extensions</h2></div>
         <ul class="research-tabs" role="tablist">
-          {
-            researchTree.map((item, i) => (
-              <li>
-                <a
-                  href="#"
-                  class:list={[i === 0 && 'active']}
-                  data-research-tab={item.id}
-                  role="tab"
-                  aria-selected={i === 0 ? 'true' : 'false'}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))
-          }
+          <li>
+            <a href="#" class="active" data-research-tab="core" role="tab" aria-selected="true" data-i18n="home.researchTabCore">
+              Explainable Network Verification
+            </a>
+          </li>
+          <li>
+            <a href="#" data-research-tab="repair" role="tab" aria-selected="false" data-i18n="home.researchTabRepair">
+              Configuration Repair
+            </a>
+          </li>
+          <li>
+            <a href="#" data-research-tab="fault-tolerance" role="tab" aria-selected="false" data-i18n="home.researchTabFault">
+              Fault-Tolerant Subspecifications
+            </a>
+          </li>
         </ul>
 
         <div class="research-panel" data-research-panel="core" role="tabpanel">
@@ -315,11 +321,11 @@ import { coreResearch, researchExtensions, researchTree } from '../config/extens
               {coreResearch.venue} · {coreResearch.date} · {coreResearch.location}
             </p>
             <p class="research-meta">{coreResearch.authors.join(', ')}</p>
-            <p>{coreResearch.description}</p>
+            <p data-i18n="research.coreDescription">{coreResearch.description}</p>
             <p>
-              <a href={coreResearch.pdf}>PDF</a>
+              <a href={coreResearch.pdf} data-i18n="home.pdf">PDF</a>
               {' · '}
-              <a href={coreResearch.doi} target="_blank" rel="noopener noreferrer">DOI</a>
+              <a href={coreResearch.doi} target="_blank" rel="noopener noreferrer" data-i18n="home.doi">DOI</a>
             </p>
           </div>
         </div>
@@ -335,13 +341,13 @@ import { coreResearch, researchExtensions, researchTree } from '../config/extens
                   {ext.location ? ` · ${ext.location}` : ''}
                 </p>
                 {ext.authors.length > 0 && <p class="research-meta">{ext.authors.join(', ')}</p>}
-                <p>{ext.description}</p>
+                <p data-i18n={ext.id === 'repair' ? 'research.repairDescription' : 'research.faultDescription'}>{ext.description}</p>
                 <p>
-                  {ext.pdf && <a href={ext.pdf}>PDF</a>}
+                  {ext.pdf && <a href={ext.pdf} data-i18n="home.pdf">PDF</a>}
                   {ext.doi && (
                     <>
                       {ext.pdf && ' · '}
-                      <a href={ext.doi} target="_blank" rel="noopener noreferrer">DOI</a>
+                      <a href={ext.doi} target="_blank" rel="noopener noreferrer" data-i18n="home.doi">DOI</a>
                     </>
                   )}
                 </p>

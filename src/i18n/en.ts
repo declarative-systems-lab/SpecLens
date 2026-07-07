@@ -1,5 +1,7 @@
 export const en = {
   nav: {
+    whySpecLens: 'Why SpecLens',
+    whyTrust: 'Why Trust',
     why: 'Why',
     capabilities: 'Capabilities',
     demo: 'Demo',
@@ -23,6 +25,80 @@ export const en = {
     paperVenue: "Based on the ACM SIGCOMM 2026 paper",
     paperTitle: 'Explainable Network Verification via Localized Subspecification',
     pipelineLabel: 'Explanation pipeline',
+    paperLink: 'Paper',
+    codeLink: 'Code',
+    contactLabel: 'Contact:',
+  },
+  home: {
+    whyHeading: 'Why SpecLens',
+    whyLead:
+      'Network verification tells you whether a configuration is correct. SpecLens explains why.',
+    whyQ1: 'Which configuration elements matter?',
+    whyQ2: 'What must each element preserve?',
+    whyQ3: 'Which local edits are safe?',
+    whyQ4: 'Which fields are irrelevant?',
+    demoHeading: 'Demo',
+    demoSubtitle: 'Inspect localized explanations on example configuration',
+    userStudyDemo: 'User-Study Demo →',
+    multiSubspecDemo: 'Explore Multi-Subspec Demo →',
+    trustHeading: 'Why Trust SpecLens',
+    trustTabUsers: 'Validated with Users',
+    trustTabSus: 'System Usability Scale (SUS)',
+    trustTabScalability: 'Scalability',
+    trustTabRuntime: 'Runtime',
+    researchHeading: 'Research Extensions',
+    researchTabCore: 'Explainable Network Verification',
+    researchTabRepair: 'Configuration Repair',
+    researchTabFault: 'Fault-Tolerant Subspecifications',
+    readFullEval: 'Read the full evaluation →',
+    pdf: 'PDF',
+    doi: 'DOI',
+    affiliation: 'ShanghaiTech University',
+    trustUsersLead:
+      'We evaluated SpecLens with 23 participants (15 professional network operators and 8 graduate students) on four configuration reasoning tasks.',
+    trustAccuracyHighlight: '<strong>52%</strong> accuracy improvement',
+    trustTimeHighlight: '<strong>24%</strong> time reduction',
+    trustUsersSummary: 'User study task accuracy and completion time.',
+    trustUsersCopy1:
+      'Participants scored higher when explanations were available. Combined accuracy rose from 1.83 to 2.67 points (+52% relative improvement on the paper scale). Task 4 showed the largest gain (+78%).',
+    trustUsersCopy2:
+      'Overall median completion time dropped by 24% (9.5 → 7.1 minutes). Graduate students saw nearly 2× speedup with subspecs; operators benefited most on the hardest task.',
+    trustSusLead:
+      'Mean SUS was 62.3/100 overall (71.3 academia, 57.5 industry). 70% of participants reported they would use localized subspecifications frequently.',
+    trustScalabilityLead:
+      'We assessed scalability by varying network size, number of prefixes, and parallelism.',
+    trustScalabilityHighlight: '<strong>81 min</strong> at 500 routers',
+    trustScalabilitySummary: 'Scalability of subspecification generation under different dimensions.',
+    trustRuntimeLead:
+      'We benchmarked end-to-end subspecification generation on real and synthetic network configurations.',
+    trustRuntimeInternet2: '<strong>21 min</strong> Internet2',
+    trustRuntimeSynthetic: '<strong>12–30 sec</strong> synthetic configs',
+    trustRuntimeSummary: 'Run time on each network configuration.',
+    chartAccuracyCombined: 'Task accuracy (combined).',
+    chartAccuracyAcademia: 'Task accuracy (grad students).',
+    chartAccuracyIndustry: 'Task accuracy (operators).',
+    chartTimeCombined: 'Task completion time (combined).',
+    chartTimeAcademia: 'Task completion time (grad students).',
+    chartTimeIndustry: 'Task completion time (operators).',
+    chartSusCombined: 'System usability scale (combined).',
+    chartSusAcademia: 'System usability scale (grad students).',
+    chartSusIndustry: 'System usability scale (operators).',
+    chartScaleNetwork: 'Vary network size.',
+    chartScalePrefixes: 'Vary prefixes.',
+    chartScaleThreads: 'Vary threads (parallelism).',
+  },
+  legend: {
+    withoutSubspecs: 'without subspecs',
+    withSubspecs: 'with subspecs',
+    median: 'median',
+    mean: 'mean value',
+    positive: 'Positive',
+    negative: 'Negative',
+    fullSym: 'FullSym',
+    subspecNs: 'Subspec',
+    subspecNsSub: 'NS',
+    subspec: 'Subspec',
+    timeout: 'Timeout',
   },
   why: {
     label: 'Why SpecLens',
@@ -98,6 +174,12 @@ export const en = {
     peopleLead:
       'SpecLens is developed at ShanghaiTech University. SIGCOMM core-paper authors will be listed after camera-ready de-anonymization.',
     contactTeam: 'Contact the team',
+    coreDescription:
+      'Introduces localized subspecifications as a sound explanation layer for verified network configurations: a scalable two-phase algorithm, a user study with network operators, and evaluation on Internet2 and large synthetic networks.',
+    repairDescription:
+      'Applies localized subspecifications to misconfigured networks by characterizing repair spaces at individual configuration locations, using a reference route propagation graph for modular computation instead of returning a single opaque patch.',
+    faultDescription:
+      'Extends localized subspecifications to k-failure models. Fault-tolerant subspecifications aggregate branch-local constraints from failure-aware symbolic routes, explaining which fields are failure-critical across admissible failure scenarios.',
   },
   getStarted: {
     label: 'Get started',

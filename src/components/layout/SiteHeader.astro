@@ -1,25 +1,30 @@
 ---
 import { siteMeta, navItems } from '../../config/siteContent';
 import { assetUrl } from '../../utils/assetUrl';
+import LanguageSwitcher from '../i18n/LanguageSwitcher.tsx';
 ---
 
 <header class="site-header" role="banner">
   <div class="container">
     <a class="site-title" href={assetUrl('/')}>{siteMeta.name}</a>
-    <nav class="site-nav" aria-label="Primary">
-      {
-        navItems.map((item) => {
-          const isExternal = item.href.startsWith('http');
-          return (
-            <a
-              href={item.href}
-              {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-            >
-              {item.label}
-            </a>
-          );
-        })
-      }
-    </nav>
+    <div class="site-header__end">
+      <nav class="site-nav" aria-label="Primary">
+        {
+          navItems.map((item) => {
+            const isExternal = item.href.startsWith('http');
+            return (
+              <a
+                href={item.href}
+                data-i18n={item.i18nKey}
+                {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              >
+                {item.fallbackLabel}
+              </a>
+            );
+          })
+        }
+      </nav>
+      <LanguageSwitcher client:load />
+    </div>
   </div>
 </header>
