@@ -1,7 +1,7 @@
 ---
 import { siteMeta, navItems } from '../../config/siteContent';
 import { assetUrl } from '../../utils/assetUrl';
-import LanguageSwitcher from '../i18n/LanguageSwitcher.tsx';
+import LanguageSwitcher from '../i18n/LanguageSwitcher.astro';
 ---
 
 <header class="site-header" role="banner">
@@ -24,7 +24,7 @@ import LanguageSwitcher from '../i18n/LanguageSwitcher.tsx';
           })
         }
       </nav>
-      <LanguageSwitcher client:load />
+      <LanguageSwitcher />
     </div>
   </div>
 </header>

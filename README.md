@@ -1,24 +1,15 @@
 # SpecLens Website
 
-Project website for **SpecLens**.
+Static website for the SpecLens project.
 
-Built with Astro and a small React island for the interactive configuration explainer.
-
-## Website
-
-Visit the SpecLens website directly:
-
-https://declarative-systems-lab.github.io/SpecLens/
-
-## Development
+## Local Development
 
 ```bash
-cd website2
 npm install
 npm run dev
 ```
 
-Open http://localhost:4321
+Open `http://localhost:4321/SpecLens/`.
 
 ## Build
 
@@ -26,6 +17,10 @@ Open http://localhost:4321
 npm run build
 ```
 
-Output is in `dist/`.
+The user study is available at `http://localhost:4321/SpecLens/userstudy/`.
 
-The user-study app is bundled at `/SpecLens/userstudy/` during deployment from [UserstudyWeb](https://github.com/declarative-systems-lab/UserstudyWeb).
+## Public Files
+
+- `public/figures/`: figures used on the homepage
+- `public/paper/`: project paper PDFs
+- `public/userstudy/`: the standalone user-study pages

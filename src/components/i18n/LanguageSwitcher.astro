@@ -1,0 +1,43 @@
+<div class="lang-switcher" role="group" aria-label="Language" data-language-switcher>
+  <button
+    type="button"
+    class="lang-switcher__btn lang-switcher__btn--active"
+    aria-pressed="true"
+    data-locale-choice="en"
+  >
+    EN
+  </button>
+  <button
+    type="button"
+    class="lang-switcher__btn"
+    aria-pressed="false"
+    data-locale-choice="zh"
+  >
+    中文
+  </button>
+</div>
+
+<script>
+  import { readStoredLocale, storeLocale, type Locale } from '../../i18n';
+
+  function updateSwitcher(locale: Locale): void {
+    document.querySelectorAll<HTMLElement>('[data-language-switcher]').forEach((switcher) => {
+      switcher.querySelectorAll<HTMLButtonElement>('[data-locale-choice]').forEach((button) => {
+        const isActive = button.dataset.localeChoice === locale;
+        button.classList.toggle('lang-switcher__btn--active', isActive);
+        button.setAttribute('aria-pressed', String(isActive));
+      });
+    });
+  }
+
+  updateSwitcher(readStoredLocale());
+
+  document.querySelectorAll<HTMLButtonElement>('[data-locale-choice]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const locale = button.dataset.localeChoice as Locale;
+      storeLocale(locale);
+      updateSwitcher(locale);
+      window.dispatchEvent(new CustomEvent('netsubspec:locale', { detail: locale }));
+    });
+  });
+</script>

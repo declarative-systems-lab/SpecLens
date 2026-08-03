@@ -1,7 +1,5 @@
 import { projectLinks } from './projectLinks';
 
-export type ExtensionStatus = 'published' | 'prototype' | 'ongoing';
-
 export interface ResearchExtension {
   id: string;
   title: string;
@@ -9,15 +7,12 @@ export interface ResearchExtension {
   date: string;
   location?: string;
   authors: string[];
-  status: ExtensionStatus;
   description: string;
   pdf?: string;
   doi?: string;
-  link?: string;
 }
 
 export interface CoreResearch {
-  id: string;
   title: string;
   venue: string;
   date: string;
@@ -26,11 +21,9 @@ export interface CoreResearch {
   description: string;
   pdf: string;
   doi: string;
-  isCore: true;
 }
 
 export const coreResearch: CoreResearch = {
-  id: 'core',
   title: 'Explainable Network Verification via Localized Subspecification',
   venue: "SIGCOMM '26",
   date: 'August 17–21, 2026',
@@ -47,8 +40,7 @@ export const coreResearch: CoreResearch = {
   description:
     'Introduces localized subspecifications as a sound explanation layer for verified network configurations: a scalable two-phase algorithm, a user study with network operators, and evaluation on Internet2 and large synthetic networks.',
   pdf: projectLinks.paper,
-  doi: 'https://doi.org/10.1145/3789240.382236',
-  isCore: true,
+  doi: 'https://doi.org/10.1145/3789240.3829155',
 };
 
 export const researchExtensions: ResearchExtension[] = [
@@ -60,7 +52,6 @@ export const researchExtensions: ResearchExtension[] = [
     date: 'August 6–7, 2026',
     location: 'Singapore',
     authors: ['Yongzheng Zhang', 'Haoxian Chen'],
-    status: 'published',
     description:
       'Applies localized subspecifications to misconfigured networks by characterizing repair spaces at individual configuration locations, using a reference route propagation graph for modular computation instead of returning a single opaque patch.',
     pdf: projectLinks.paperRepair,
@@ -74,16 +65,9 @@ export const researchExtensions: ResearchExtension[] = [
     date: 'August 17–21, 2026',
     location: 'Denver, CO, USA',
     authors: ['Yaxuan Lin', 'Yongzheng Zhang', 'Haoxian Chen'],
-    status: 'prototype',
     description:
       'Extends localized subspecifications to k-failure models. Fault-tolerant subspecifications aggregate branch-local constraints from failure-aware symbolic routes, explaining which fields are failure-critical across admissible failure scenarios.',
     pdf: projectLinks.paperFault,
     doi: 'https://doi.org/10.1145/3789240.3822361',
   },
-];
-
-export const researchTree = [
-  { id: 'core', label: 'Explainable Network Verification', kind: 'core' as const },
-  { id: 'repair', label: 'Configuration Repair', kind: 'extension' as const },
-  { id: 'fault-tolerance', label: 'Fault-Tolerant Subspecifications', kind: 'extension' as const },
 ];
