@@ -34,23 +34,30 @@ import { coreResearch, researchExtensions } from '../config/extensions';
       <section id="demo" class="section">
         <div class="section-title"><h2 data-i18n="home.demoHeading">Try SpecLens</h2></div>
         <p class="demo-intro" data-i18n="home.demoUserStudyLead">
-          Explore localized configuration explanations through our interactive user-study tasks.
+          Explore localized configuration explanations through our interactive user study tasks.
         </p>
-        <a
-          class="demo-preview"
-          href={projectLinks.userStudy}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src={assetUrl('/figures/fig_userstudy.png')}
-            alt="SpecLens localized configuration explanation with a subspecification tooltip"
-          />
-          <span class="demo-preview__overlay">
-            <strong data-i18n="home.demoPreviewTitle">Explore SpecLens interactively</strong>
-            <span class="demo-preview__action" data-i18n="home.demoPreviewAction">Open demo →</span>
-          </span>
-        </a>
+        <div class="demo-figure-wrap">
+          <figure class="figure-box figure-box--wide demo-figure">
+            <a
+              class="demo-preview"
+              href={projectLinks.userStudy}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={assetUrl('/figures/fig_userstudy.png')}
+                alt="SpecLens localized configuration explanation with a subspecification tooltip"
+              />
+              <span class="demo-preview__overlay">
+                <strong data-i18n="home.demoPreviewTitle">Explore SpecLens interactively</strong>
+                <span class="demo-preview__action" data-i18n="home.demoPreviewAction">Open the user study →</span>
+              </span>
+            </a>
+          </figure>
+        </div>
+        <p class="content-row trust-footer demo-footer">
+          <a href={projectLinks.userStudy} target="_blank" rel="noopener noreferrer">Open the user study →</a>
+        </p>
       </section>
 
       <section id="trust" class="section">
@@ -100,11 +107,11 @@ import { coreResearch, researchExtensions } from '../config/extensions';
                 <figcaption data-i18n="home.chartAccuracyCombined">Task accuracy (combined).</figcaption>
               </figure>
               <figure>
-                <img src={assetUrl('/figures/fig_userstudy_accuracy_academia.png')} alt="Task accuracy (grad students)" loading="lazy" />
+                <img src={assetUrl('/figures/fig_userstudy_accuracy_academia.png')} alt="Task accuracy (grad. students)" loading="lazy" />
                 <figcaption data-i18n="home.chartAccuracyAcademia">Task accuracy (grad students).</figcaption>
               </figure>
               <figure>
-                <img src={assetUrl('/figures/fig_userstudy_accuracy_industry.png')} alt="Task accuracy (operators)" loading="lazy" />
+                <img src={assetUrl('/figures/fig_userstudy_accuracy_industry.png')} alt="Task accuracy (net. operators)" loading="lazy" />
                 <figcaption data-i18n="home.chartAccuracyIndustry">Task accuracy (operators).</figcaption>
               </figure>
               <figure>
@@ -112,11 +119,11 @@ import { coreResearch, researchExtensions } from '../config/extensions';
                 <figcaption data-i18n="home.chartTimeCombined">Task completion time (combined).</figcaption>
               </figure>
               <figure>
-                <img src={assetUrl('/figures/fig_userstudy_time_academia.png')} alt="Task completion time (grad students)" loading="lazy" />
+                <img src={assetUrl('/figures/fig_userstudy_time_academia.png')} alt="Task completion time (grad. students)" loading="lazy" />
                 <figcaption data-i18n="home.chartTimeAcademia">Task completion time (grad students).</figcaption>
               </figure>
               <figure>
-                <img src={assetUrl('/figures/fig_userstudy_time_industry.png')} alt="Task completion time (operators)" loading="lazy" />
+                <img src={assetUrl('/figures/fig_userstudy_time_industry.png')} alt="Task completion time (net. operators)" loading="lazy" />
                 <figcaption data-i18n="home.chartTimeIndustry">Task completion time (operators).</figcaption>
               </figure>
             </div>
@@ -145,11 +152,11 @@ import { coreResearch, researchExtensions } from '../config/extensions';
                 <figcaption data-i18n="home.chartSusCombined">System usability scale (combined).</figcaption>
               </figure>
               <figure>
-                <img src={assetUrl('/figures/fig_userstudy_sus_academia.png')} alt="SUS (grad students)" loading="lazy" />
+                <img src={assetUrl('/figures/fig_userstudy_sus_academia.png')} alt="SUS (grad. students)" loading="lazy" />
                 <figcaption data-i18n="home.chartSusAcademia">System usability scale (grad students).</figcaption>
               </figure>
               <figure>
-                <img src={assetUrl('/figures/fig_userstudy_sus_industry.png')} alt="SUS (operators)" loading="lazy" />
+                <img src={assetUrl('/figures/fig_userstudy_sus_industry.png')} alt="SUS (net. operators)" loading="lazy" />
                 <figcaption data-i18n="home.chartSusIndustry">System usability scale (operators).</figcaption>
               </figure>
             </div>
@@ -207,11 +214,11 @@ import { coreResearch, researchExtensions } from '../config/extensions';
             <div class="eval-chart-single">
               <img
                 src={assetUrl('/figures/fig_benchmarks.png')}
-                alt="Run time on each network configuration"
+                alt="Run time of subspecification generation under different benchmarks"
                 loading="lazy"
               />
             </div>
-            <p class="figure-caption figure-caption--summary" data-i18n="home.trustRuntimeSummary">Run time on each network configuration.</p>
+            <p class="figure-caption figure-caption--summary" data-i18n="home.trustRuntimeSummary">Run time of subspecification generation under different benchmarks.</p>
           </figure>
         </div>
 

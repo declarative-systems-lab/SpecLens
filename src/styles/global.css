@@ -211,10 +211,11 @@ p {
 
 .banner-container > p:not([class]) {
   color: var(--color-text-secondary);
+  margin-bottom: 0.7rem;
 }
 
 .hero-why {
-  margin: 1.1rem 0 0.75rem;
+  margin: 0.35rem 0 0.75rem;
   color: var(--color-heading);
   font-weight: 600;
 }
@@ -512,21 +513,29 @@ p {
   text-align: center;
 }
 
+.demo-figure-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.demo-figure {
+  width: min(100%, 700px);
+  margin: 0;
+}
+
 .demo-preview {
   position: relative;
   display: block;
-  width: min(100%, 700px);
+  width: 100%;
   margin: 0 auto;
   overflow: hidden;
-  color: #fff;
-  background: var(--color-nav);
-  border: 1px solid var(--color-border-strong);
-  border-radius: 10px;
-  box-shadow: 0 10px 28px rgba(10, 34, 56, 0.1);
+  background: var(--color-surface);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .demo-preview:hover {
-  color: #fff;
   text-decoration: none;
 }
 
@@ -605,8 +614,8 @@ p {
   padding: 0.75rem;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-card);
-  border-radius: 6px;
+  box-shadow: var(--shadow-sm);
+  border-radius: 0;
 }
 
 .figure-box img {

@@ -30,7 +30,7 @@ export const userStudyMetrics = {
 
 /** Benchmark numbers from sec_eval.tex (RQ3 efficiency + RQ4 scalability). */
 export const benchmarkMetrics = {
-  /** Subspec runtime on Internet2 (Figure: Run time on each network configuration). */
+  /** Subspec runtime on Internet2 (Figure: Run time of subspecification generation under different benchmarks). */
   internet2Minutes: 10,
   /** Subspec runtime on Bics, Columbus, USCarrier (same figure). */
   syntheticSecondsRange: '12–30',
