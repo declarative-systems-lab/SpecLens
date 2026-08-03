@@ -16,7 +16,10 @@ import { coreResearch, researchExtensions } from '../config/extensions';
     <div class="container banner-container">
       <h1>{siteMeta.name}</h1>
       <p class="hero-lead" data-i18n="hero.tagline">{siteMeta.tagline}</p>
-      <p data-i18n="hero.description">{siteMeta.description}</p>
+      <p class="hero-paper" data-i18n="hero.paper">
+        Based on the ACM SIGCOMM 2026 paper: Explainable Network Verification via Localized Subspecification
+      </p>
+      <p class="hero-description" data-i18n="hero.description">{siteMeta.description}</p>
       <p class="hero-why" data-i18n="home.whyLead">
         Network verification tells you whether a configuration is correct. {siteMeta.name} explains why.
       </p>

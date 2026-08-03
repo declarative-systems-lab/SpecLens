@@ -9,6 +9,7 @@ export const zh: Messages = {
   },
   hero: {
     tagline: '理解网络配置为何正确。',
+    paper: '基于 ACM SIGCOMM 2026 论文：Explainable Network Verification via Localized Subspecification',
     description:
       'SpecLens 是一款开源的网络配置解释工具，可推导局部子规约（localized subspecification，简称 subspec）——针对单个路由器、配置行或字段的可靠约束，用于解释它们如何维持已验证的网络行为。',
     contactLabel: '联系：',

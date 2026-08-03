@@ -7,8 +7,9 @@ export const en = {
   },
   hero: {
     tagline: 'Understand why your network configuration is correct.',
+    paper: 'Based on the ACM SIGCOMM 2026 paper: Explainable Network Verification via Localized Subspecification',
     description:
-      'SpecLens is an open-source network configuration explanation tool that derives localized, sound subspecifications (subspecs)—constraints on individual routers, configuration lines, and fields that explain how they preserve verified network behavior.',
+      'SpecLens is an open-source network configuration explanation tool that derives localized subspecifications (subspecs) — sound constraints on individual routers, configuration lines, and fields that explain how they preserve verified network behavior.',
     contactLabel: 'Contact:',
   },
   home: {
