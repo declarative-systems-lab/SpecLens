@@ -2,9 +2,6 @@
 
 Static website for the SpecLens project.
 
-This website is available at `https://declarative-systems-lab/SpecLens`.
-The user study is available at `https://declarative-systems-lab.github.io/SpecLens/userstudy`.
-
 ## Local Development
 
 ```bash
