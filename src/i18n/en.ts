@@ -1,9 +1,9 @@
 export const en = {
   nav: {
     demo: 'Try SpecLens',
+    source: 'Source Code',
     whyTrust: 'Why Trust',
     research: 'Research',
-    github: 'GitHub',
   },
   hero: {
     tagline: 'Understand why your network configuration is correct.',
@@ -22,17 +22,39 @@ export const en = {
     demoHeading: 'Try SpecLens',
     demoUserStudyLead: 'Explore localized configuration explanations through our interactive user study tasks.',
     demoPreviewTitle: 'Explore SpecLens interactively',
-    demoPreviewAction: 'Open the user study →',
+    demoPreviewAction: 'Open the User Study →',
+    sourceHeading: 'Open Source',
+    sourceLeadPrefix: 'SpecLens is fully open source at',
+    sourceLeadSuffix:
+      '. The repository contains the implementation, configurations, and workflows needed to reproduce and extend our analyses.',
+    sourceItemExtensions:
+      'Batfish and Minesweeper extensions for simulation and verification encoding.',
+    sourceItemPipeline: 'The complete SpecLens subspecification analysis pipeline.',
+    sourceItemConfigurations: 'User-study and benchmark network configurations.',
+    sourceItemWorkflows: 'Reproducible end-to-end command-line workflows.',
+    sourceAction: 'View the Source Code on GitHub →',
+    overviewTab: 'Overview',
     trustHeading: 'Why Trust SpecLens',
+    trustOverviewLead:
+      'SpecLens is supported by evidence from user studies and experiments on real-world and synthetic networks. These evaluations examine whether its explanations improve configuration reasoning, remain usable, and scale to large networks.',
+    trustOverviewUsers: 'User Study: 52% accuracy improvement and 23% time reduction.',
+    trustOverviewUsability:
+      'Usability: 62/100 average SUS; 70% would use SpecLens in daily practice.',
+    trustOverviewScalability:
+      'Scalability: A 1,280-router FatTree network analyzed in 25 minutes.',
+    trustOverviewRuntime:
+      'Runtime: 10 minutes on Internet2 and 12–30 seconds on synthetic networks.',
     trustTabUsers: 'Validated with Users',
     trustTabSus: 'System Usability Scale (SUS)',
     trustTabScalability: 'Scalability',
     trustTabRuntime: 'Runtime',
     researchHeading: 'Research Extensions',
+    researchOverviewLead:
+      'Localized subspecifications provide a general explanation layer for network configuration analysis. Beyond explainable verification, we extend them to configuration repair and fault-tolerant reasoning.',
     researchTabCore: 'Explainable Network Verification',
     researchTabRepair: 'Configuration Repair',
-    researchTabFault: 'Fault-Tolerant Subspecifications',
-    readFullEval: 'Read the full evaluation →',
+    researchTabFault: 'Fault Tolerance',
+    readFullEval: 'Read the Full Evaluation →',
     pdf: 'PDF',
     doi: 'DOI',
     affiliation: 'ShanghaiTech University',

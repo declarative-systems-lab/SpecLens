@@ -333,7 +333,7 @@ p {
 }
 
 .eval-chart-single {
-  max-width: 580px;
+  max-width: 420px;
   margin: 0.15rem auto 0;
   padding: 0 0.5rem;
 }
@@ -521,6 +521,25 @@ p {
   text-align: center;
 }
 
+#source .content-row {
+  max-width: 700px;
+}
+
+.source-intro {
+  margin-bottom: 1.25rem;
+  color: var(--color-text-secondary);
+  text-align: left;
+}
+
+.source-intro a {
+  overflow-wrap: anywhere;
+}
+
+#source .source-list {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
 .demo-figure-wrap {
   display: flex;
   justify-content: center;
@@ -700,6 +719,78 @@ p {
 .research-panel {
   max-width: 1000px;
   margin: 0 auto;
+}
+
+.overview-panel {
+  max-width: 700px;
+}
+
+.overview-lead {
+  margin: 0 auto 1.25rem;
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+  text-align: left;
+}
+
+.overview-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.overview-list li {
+  position: relative;
+  margin-bottom: 0.65rem;
+  padding-left: 1.2rem;
+  color: var(--color-text-secondary);
+}
+
+.overview-list li:last-child {
+  margin-bottom: 0;
+}
+
+.overview-list li::before {
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+  content: '→';
+}
+
+.fact-list li::before {
+  top: 0.55em;
+  width: 0.32rem;
+  height: 0.32rem;
+  background: var(--color-accent);
+  border-radius: 50%;
+  content: '';
+}
+
+.fact-list li {
+  margin-bottom: 0.35rem;
+}
+
+.fact-list li:last-child {
+  margin-bottom: 0;
+}
+
+.research-overview-list a {
+  font-weight: 600;
+}
+
+.research-overview-list li {
+  padding-left: 0;
+}
+
+.research-overview-list li::before {
+  content: none;
+}
+
+.research-overview-venue,
+.research-overview-award {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
 }
 
 .trust-panel__intro {

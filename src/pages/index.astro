@@ -53,13 +53,13 @@ import { coreResearch, researchExtensions } from '../config/extensions';
               />
               <span class="demo-preview__overlay">
                 <strong data-i18n="home.demoPreviewTitle">Explore SpecLens interactively</strong>
-                <span class="demo-preview__action" data-i18n="home.demoPreviewAction">Open the user study →</span>
+                <span class="demo-preview__action" data-i18n="home.demoPreviewAction">Open the User Study →</span>
               </span>
             </a>
           </figure>
         </div>
         <p class="content-row trust-footer demo-footer">
-          <a href={projectLinks.userStudy} target="_blank" rel="noopener noreferrer">Open the user study →</a>
+          <a href={projectLinks.userStudy} target="_blank" rel="noopener noreferrer" data-i18n="home.demoPreviewAction">Open the User Study →</a>
         </p>
       </section>
 
@@ -70,7 +70,12 @@ import { coreResearch, researchExtensions } from '../config/extensions';
 
         <ul class="trust-tabs" role="tablist">
           <li>
-            <a href="#" class="active" data-trust-tab="users" role="tab" aria-selected="true" data-i18n="home.trustTabUsers">
+            <a href="#" class="active" data-trust-tab="overview" role="tab" aria-selected="true" data-i18n="home.overviewTab">
+              Overview
+            </a>
+          </li>
+          <li>
+            <a href="#" data-trust-tab="users" role="tab" aria-selected="false" data-i18n="home.trustTabUsers">
               Validated with Users
             </a>
           </li>
@@ -91,7 +96,19 @@ import { coreResearch, researchExtensions } from '../config/extensions';
           </li>
         </ul>
 
-        <div class="trust-panel" data-trust-panel="users" role="tabpanel">
+        <div class="trust-panel overview-panel" data-trust-panel="overview" role="tabpanel">
+          <p class="overview-lead" data-i18n="home.trustOverviewLead">
+            SpecLens is supported by evidence from user studies and experiments on real-world and synthetic networks. These evaluations examine whether its explanations improve configuration reasoning, remain usable, and scale to large networks.
+          </p>
+          <ul class="overview-list fact-list">
+            <li data-i18n="home.trustOverviewUsers">User Study: 52% accuracy improvement and 23% time reduction.</li>
+            <li data-i18n="home.trustOverviewUsability">Usability: 62/100 average SUS; 70% would use SpecLens in daily practice.</li>
+            <li data-i18n="home.trustOverviewScalability">Scalability: A 1,280-router FatTree network analyzed in 25 minutes.</li>
+            <li data-i18n="home.trustOverviewRuntime">Runtime: 10 minutes on Internet2 and 12–30 seconds on synthetic networks.</li>
+          </ul>
+        </div>
+
+        <div class="trust-panel" data-trust-panel="users" role="tabpanel" hidden>
           <div class="trust-panel__intro">
             <p class="eval-lead" data-i18n="home.trustUsersLead">
               We evaluated {siteMeta.name} with {userStudyMetrics.participants} participants ({userStudyMetrics.operators} professional network operators and {userStudyMetrics.students} graduate students) on four configuration reasoning tasks.
@@ -226,7 +243,25 @@ import { coreResearch, researchExtensions } from '../config/extensions';
         </div>
 
         <p class="content-row trust-footer">
-          <a href={projectLinks.paper} data-i18n="home.readFullEval">Read the full evaluation →</a>
+          <a href={projectLinks.paper} data-i18n="home.readFullEval">Read the Full Evaluation →</a>
+        </p>
+      </section>
+
+      <section id="source" class="section">
+        <div class="section-title"><h2 data-i18n="home.sourceHeading">Open Source</h2></div>
+        <p class="content-row source-intro">
+          <span data-i18n="home.sourceLeadPrefix">SpecLens is fully open source at</span>{' '}<a href={projectLinks.github} target="_blank" rel="noopener noreferrer">github.com/declarative-systems-lab/batfish</a><span data-i18n="home.sourceLeadSuffix">. The repository contains the implementation, configurations, and workflows needed to reproduce and extend our analyses.</span>
+        </p>
+        <ul class="overview-list fact-list source-list">
+          <li data-i18n="home.sourceItemExtensions">Batfish and Minesweeper extensions for simulation and verification encoding.</li>
+          <li data-i18n="home.sourceItemPipeline">The complete SpecLens subspecification analysis pipeline.</li>
+          <li data-i18n="home.sourceItemConfigurations">User-study and benchmark network configurations.</li>
+          <li data-i18n="home.sourceItemWorkflows">Reproducible end-to-end command-line workflows.</li>
+        </ul>
+        <p class="content-row trust-footer">
+          <a href={projectLinks.github} target="_blank" rel="noopener noreferrer" data-i18n="home.sourceAction">
+            View the Source Code on GitHub →
+          </a>
         </p>
       </section>
 
@@ -234,7 +269,12 @@ import { coreResearch, researchExtensions } from '../config/extensions';
         <div class="section-title"><h2 data-i18n="home.researchHeading">Research Extensions</h2></div>
         <ul class="research-tabs" role="tablist">
           <li>
-            <a href="#" class="active" data-research-tab="core" role="tab" aria-selected="true" data-i18n="home.researchTabCore">
+            <a href="#" class="active" data-research-tab="overview" role="tab" aria-selected="true" data-i18n="home.overviewTab">
+              Overview
+            </a>
+          </li>
+          <li>
+            <a href="#" data-research-tab="core" role="tab" aria-selected="false" data-i18n="home.researchTabCore">
               Explainable Network Verification
             </a>
           </li>
@@ -245,12 +285,33 @@ import { coreResearch, researchExtensions } from '../config/extensions';
           </li>
           <li>
             <a href="#" data-research-tab="fault-tolerance" role="tab" aria-selected="false" data-i18n="home.researchTabFault">
-              Fault-Tolerant Subspecifications
+              Fault Tolerance
             </a>
           </li>
         </ul>
 
-        <div class="research-panel" data-research-panel="core" role="tabpanel">
+        <div class="research-panel overview-panel" data-research-panel="overview" role="tabpanel">
+          <p class="overview-lead" data-i18n="home.researchOverviewLead">
+            Localized subspecifications provide a general explanation layer for network configuration analysis. Beyond explainable verification, we extend them to configuration repair and fault-tolerant reasoning.
+          </p>
+          <ul class="overview-list research-overview-list">
+            <li>
+              <a href={coreResearch.pdf}>{coreResearch.title}</a>
+              <span class="research-overview-venue">{coreResearch.proceedings}</span>
+            </li>
+            {
+              researchExtensions.map((ext) => (
+                <li>
+                  {ext.pdf ? <a href={ext.pdf}>{ext.title}</a> : ext.title}
+                  <span class="research-overview-venue">{ext.proceedings}</span>
+                  {ext.award && <span class="research-overview-award">{ext.award}</span>}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div class="research-panel" data-research-panel="core" role="tabpanel" hidden>
           <div class="content-row">
             <h4><a href={coreResearch.pdf}>{coreResearch.title}</a></h4>
             <p class="research-meta">

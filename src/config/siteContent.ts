@@ -1,4 +1,3 @@
-import { projectLinks } from './projectLinks';
 import { assetUrl } from '../utils/assetUrl';
 
 export const siteMeta = {
@@ -11,8 +10,8 @@ export const siteMeta = {
 export const navItems = [
   { i18nKey: 'nav.demo', fallbackLabel: 'Try SpecLens', href: assetUrl('/#demo') },
   { i18nKey: 'nav.whyTrust', fallbackLabel: 'Why Trust', href: assetUrl('/#trust') },
+  { i18nKey: 'nav.source', fallbackLabel: 'Source Code', href: assetUrl('/#source') },
   { i18nKey: 'nav.research', fallbackLabel: 'Research', href: assetUrl('/#research') },
-  { i18nKey: 'nav.github', fallbackLabel: 'GitHub', href: projectLinks.github },
 ] as const;
 
 export const contact = {

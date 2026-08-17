@@ -4,6 +4,8 @@ export interface ResearchExtension {
   id: string;
   title: string;
   venue: string;
+  proceedings: string;
+  award?: string;
   date: string;
   location?: string;
   authors: string[];
@@ -15,6 +17,7 @@ export interface ResearchExtension {
 export interface CoreResearch {
   title: string;
   venue: string;
+  proceedings: string;
   date: string;
   location: string;
   authors: string[];
@@ -26,6 +29,7 @@ export interface CoreResearch {
 export const coreResearch: CoreResearch = {
   title: 'Explainable Network Verification via Localized Subspecification',
   venue: "SIGCOMM '26",
+  proceedings: 'In Proceedings of ACM SIGCOMM 2026.',
   date: 'August 17–21, 2026',
   location: 'Denver, CO, USA',
   authors: [
@@ -49,6 +53,8 @@ export const researchExtensions: ResearchExtension[] = [
     title:
       'Characterizing Network Configuration Repair Spaces with Localized Subspecifications',
     venue: "APNet '26",
+    proceedings: 'In Proceedings of ACM APNet 2026.',
+    award: 'Best Paper Award.',
     date: 'August 6–7, 2026',
     location: 'Singapore',
     authors: ['Yongzheng Zhang', 'Haoxian Chen'],
@@ -62,6 +68,7 @@ export const researchExtensions: ResearchExtension[] = [
     title:
       'Explaining Network Configurations Under Failures via Localized Subspecifications',
     venue: "FMANO '26",
+    proceedings: 'In Proceedings of ACM FMANO 2026 (SIGCOMM Workshop).',
     date: 'August 17–21, 2026',
     location: 'Denver, CO, USA',
     authors: ['Yaxuan Lin', 'Yongzheng Zhang', 'Haoxian Chen'],
