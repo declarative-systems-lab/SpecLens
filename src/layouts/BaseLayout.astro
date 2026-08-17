@@ -3,6 +3,7 @@ import '../styles/global.css';
 import SiteHeader from '../components/layout/SiteHeader.astro';
 import SiteFooter from '../components/layout/SiteFooter.astro';
 import { siteMeta } from '../config/siteContent';
+import { assetUrl } from '../utils/assetUrl';
 
 interface Props {
   title?: string;
@@ -21,6 +22,9 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <link rel="icon" href={assetUrl('/favicon.ico')} sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href={assetUrl('/favicon-32x32.png')} />
+    <link rel="apple-touch-icon" sizes="180x180" href={assetUrl('/apple-touch-icon.png')} />
     <title>{title}</title>
   </head>
   <body>
